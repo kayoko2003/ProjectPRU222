@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5585907170409665244}
   - component: {fileID: 31082364639407846}
   - component: {fileID: 3771512983780949931}
+  - component: {fileID: 175975563824348572}
   m_Layer: 0
   m_Name: Blue Slime
   m_TagString: Untagged
@@ -124,7 +125,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -233,4 +234,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  taget: {fileID: 0}
+--- !u!114 &175975563824348572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896297766536218951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf675eaf6ce8f14395e4da131756dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDamage: 1
+  maxDamage: 5

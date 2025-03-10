@@ -70,4 +70,10 @@ public class PlayerController : MonoBehaviour
             facingLeft = false;
         }
     }
+
+    public Health playerHealth;
+    public void TakeDamage(int damage)
+    {
+        playerHealth.TakeDam(damage);
+    }
 }
