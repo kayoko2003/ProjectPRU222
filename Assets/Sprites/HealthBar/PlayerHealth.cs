@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Healtha : MonoBehaviour
 {
     [SerializeField] int maxHealth;
     int currentHealth;
