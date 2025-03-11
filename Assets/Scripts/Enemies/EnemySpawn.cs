@@ -34,7 +34,7 @@ public class EnemySpawn : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = FindObjectOfType<PlayerController>().transform;
+        player = Object.FindFirstObjectByType<PlayerController>().transform;
         CalculateWaveQuota();
     }
 

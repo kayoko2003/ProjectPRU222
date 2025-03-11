@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
     public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
     public static PlayerController Instance;
 
-    [SerializeField] private float moveSpeed = 1f;
-
     private PlayerControls playerControls;
     public Vector2 movement;
     private Rigidbody2D rb;
@@ -16,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
     private bool facingLeft = false;
+
+    public CharacterScriptableObject characterData;
+
     private void Awake()
     {
         Instance = this;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.deltaTime));
+        rb.MovePosition(rb.position + movement * (characterData.MoveSpeed * Time.deltaTime));
     }
 
     private void AdjustPlayerFacingDirection()

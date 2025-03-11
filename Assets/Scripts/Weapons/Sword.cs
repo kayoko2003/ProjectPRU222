@@ -7,6 +7,8 @@ public class Sword : MonoBehaviour
     [SerializeField] private Transform slashAnimSpawnPoint;
     [SerializeField] private Transform weaponCollider;
 
+    public WeaponScriptableObject weaponData;
+
     private PlayerControls playerControls;
     private Animator animator;
     private PlayerController playerController;
