@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90047813c357744ca75d8eb88deb185, type: 3}
-  m_Name: Sword weapon
+  m_Script: {fileID: 11500000, guid: e5ca269f6f2a5f445b5a0235208ca911, type: 3}
+  m_Name: Slam enemy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1437033923941116287, guid: c55cfb3ed5a406040b90b103a48f29f0, type: 3}
-  damage: 5
-  speed: 0
-  cooldownDuration: 1
-  pierce: 1
+  moveSpeed: 2
+  maxHealth: 10
+  damage: 0

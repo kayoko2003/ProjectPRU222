@@ -13,14 +13,14 @@ GameObject:
   - component: {fileID: 1769674779188454182}
   - component: {fileID: 1064968864261927732}
   - component: {fileID: 6586824780310567926}
-  - component: {fileID: 3886636487528459987}
   - component: {fileID: 5585907170409665244}
   - component: {fileID: 31082364639407846}
   - component: {fileID: 3771512983780949931}
   - component: {fileID: 7531948328223263748}
+  - component: {fileID: -2858944375738770869}
   m_Layer: 0
   m_Name: Blue Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,19 +181,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3886636487528459987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3896297766536218951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f7141d63b09fd43a863f95901613e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
 --- !u!114 &5585907170409665244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c5e5d1414cace40a42dbf82b3ac2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  enemyData: {fileID: 11400000, guid: 3266636d057bd2047a5236abc09ab0f2, type: 2}
 --- !u!114 &7531948328223263748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +237,16 @@ MonoBehaviour:
   - name: Blue gem
     itemPrefab: {fileID: 8828827591731465161, guid: 2ae5f01c3023c2f49a64062d3cb16758, type: 3}
     dropRate: 100
+--- !u!114 &-2858944375738770869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896297766536218951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed47822b4defb348b110d31b2246bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 3266636d057bd2047a5236abc09ab0f2, type: 2}
