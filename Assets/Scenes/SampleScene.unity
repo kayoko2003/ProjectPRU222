@@ -937,25 +937,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainChunks:
-  - {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
-  - {fileID: 5047401152791146996, guid: 701cd0631fdc35c489d6c8d6d9294256, type: 3}
-  - {fileID: 5047401152791146996, guid: 59ca0b69a46991846a03af83a08c06dd, type: 3}
+  - {fileID: 4468799876558687372, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
+  - {fileID: 4468799876558687372, guid: 7e2240659f009f14caaebfe7973c6c8d, type: 3}
+  - {fileID: 4468799876558687372, guid: 5de853381d5d21643b265a9524dfa66a, type: 3}
   player: {fileID: 749504493}
   checkerRadius: 0
-  checkerRadius: 2
   terrainMask:
     serializedVersion: 2
     m_Bits: 64
-  currentChunk: {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+  currentChunk: {fileID: 4902046229146384558, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
   maxOpDist: 20.8
   bufferZone: 50
   maxSpawnPerFrame: 5
   chunkSize: 10
-  currentChunk: {fileID: 0}
-  spawnedChunks:
-  - {fileID: 0}
-  maxOpDist: 30.9
-  optimizerCooldownDur: 1
 --- !u!4 &962263844
 Transform:
   m_ObjectHideFlags: 0
@@ -1301,6 +1295,10 @@ PrefabInstance:
       propertyPath: 'propSpawnPoints.Array.data[7]'
       value: 
       objectReference: {fileID: 1091139002}
+    - target: {fileID: 707255945412300829, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1109200661587196691, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
@@ -1328,10 +1326,6 @@ PrefabInstance:
     - target: {fileID: 1509334276885945065, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_LocalPosition.y
       value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 707255945412300829, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1976035230307712333, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_SortingOrder
@@ -1380,10 +1374,6 @@ PrefabInstance:
     - target: {fileID: 4468799876558687372, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_Name
       value: Terrain Chunk
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468799876558687372, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4468799876558687372, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_IsActive
@@ -3078,7 +3068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
