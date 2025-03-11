@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b90047813c357744ca75d8eb88deb185, type: 3}
-  m_Name: Sword weapon
+  m_Name: Knife weapon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1437033923941116287, guid: c55cfb3ed5a406040b90b103a48f29f0, type: 3}
+  prefab: {fileID: 7668260203367023400, guid: e22829aea38f5ff41b8b4f495dc79ab0, type: 3}
   damage: 5
-  speed: 0
-  cooldownDuration: 1
+  speed: 10
+  cooldownDuration: 2
   pierce: 1

@@ -20,13 +20,11 @@ public class MapController : MonoBehaviour
     float optimizerCooldown;
     public float optimizerCooldownDur;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerController = Object.FindFirstObjectByType<PlayerController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ChunkChecker();
