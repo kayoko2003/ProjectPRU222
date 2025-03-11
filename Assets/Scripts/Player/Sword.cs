@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Sword : MonoBehaviour
@@ -40,12 +40,26 @@ public class Sword : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetTrigger("Attack");
-        weaponCollider.gameObject.SetActive(true);  
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
+            weaponCollider.gameObject.SetActive(true);
 
-        slashAnim = Instantiate(slashAnimaPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
-        slashAnim.transform.parent = this.transform.parent;
+            slashAnim = Instantiate(slashAnimaPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
+            slashAnim.transform.parent = this.transform.parent;
+        }
+        else
+        {
+            Debug.LogWarning("Animator đã bị hủy, không thể thực hiện Attack()");
+        }
     }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
+
 
     public void DoneAttackingAnimEvent()
     {
