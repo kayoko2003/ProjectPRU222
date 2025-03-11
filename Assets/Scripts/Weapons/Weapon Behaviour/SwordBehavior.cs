@@ -11,9 +11,14 @@ public class SwordBehavior : MeleeWeaponBehaviour
     private GameObject slashAnim;
     private Animator animator;
 
-    private void Awake()
+    private KnockBack knockBack;
+    private Flash flash;
+
+    protected override void Awake()
     {
         base.Awake();
+        flash = GetComponent<Flash>();
+        knockBack = GetComponent<KnockBack>();
         animator = GetComponent<Animator>();
     }
 
@@ -41,5 +46,4 @@ public class SwordBehavior : MeleeWeaponBehaviour
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
-
 }
