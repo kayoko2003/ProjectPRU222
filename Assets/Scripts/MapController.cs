@@ -1,149 +1,151 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
     public List<GameObject> terrainChunks;
     public GameObject player;
-    public float checkerRadius;
-    Vector3 noTerrainPosition;
-
+    public float checkerRadius = 50f;
     public LayerMask terrainMask;
     public GameObject currentChunk;
-    PlayerController playerController;
 
-    public List<GameObject> spawnedChunks;
-    GameObject lastestChunk;
-    public float maxOpDist;
-    float opDist;
-    float optimizerCooldown;
-    public float optimizerCooldownDur;
+    private HashSet<Vector3> spawnedPositions = new HashSet<Vector3>();
+    private List<GameObject> spawnedChunks = new List<GameObject>();
+    private Queue<GameObject> chunkPool = new Queue<GameObject>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int maxChunks = 150;
+    public float maxOpDist = 200f; // Tăng để tránh chunk bị ẩn sớm
+    public float bufferZone = 50f; // Vùng đệm trước khi tắt chunk
+    public int maxSpawnPerFrame = 6;
+    public float chunkSize = 10f;
+
     void Start()
     {
-        playerController = Object.FindFirstObjectByType<PlayerController>();
+        for (int i = 0; i < maxChunks; i++)
+        {
+            int rand = Random.Range(0, terrainChunks.Count);
+            GameObject chunk = Instantiate(terrainChunks[rand], Vector3.zero, Quaternion.identity);
+            chunk.SetActive(false);
+            chunkPool.Enqueue(chunk);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         ChunkChecker();
         ChunkOptimizer();
+        ConstrainPlayer();
     }
 
     void ChunkChecker()
     {
-        if (!currentChunk)
-        {
-            return;
-        }
+        if (!currentChunk) return;
 
-        if(playerController.movement.x > 0 &&  playerController.movement.y == 0)
+        string[] directionNames = { "Right", "Left", "Up", "Down",
+                                "Right Up", "Right Down", "Left Up", "Left Down" };
+
+        int spawnedCount = 0;
+
+        foreach (string dirName in directionNames)
         {
-            if(!Physics2D.OverlapCircle(currentChunk.transform.Find("Right").position, checkerRadius, terrainMask))
+            if (spawnedCount >= maxSpawnPerFrame) break;
+
+            Transform checkPoint = currentChunk.transform.Find(dirName);
+            if (checkPoint == null) continue;
+
+            Vector3 spawnPos = checkPoint.position;
+
+            // Giới hạn trong phạm vi 100x100 (từ -50 đến 50)
+            if (Mathf.Abs(spawnPos.x) > 120 || Mathf.Abs(spawnPos.y) > 120) continue;
+
+            if (!spawnedPositions.Contains(spawnPos) &&
+                !Physics2D.OverlapBox(spawnPos, new Vector2(chunkSize, chunkSize), 0, terrainMask))
             {
-                noTerrainPosition = currentChunk.transform.Find("Right").position;
-                SpawnChunk();
+                SpawnChunk(spawnPos);
+                spawnedCount++;
             }
-
-        }
-        else if (playerController.movement.x < 0 && playerController.movement.y == 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x == 0 && playerController.movement.y > 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Up").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Up").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x == 0 && playerController.movement.y < 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Down").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Down").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x > 0 && playerController.movement.y > 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Right Up").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Right Up").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x > 0 && playerController.movement.y < 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Right Down").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Right Down").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x < 0 && playerController.movement.y > 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left Up").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left Up").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x < 0 && playerController.movement.y < 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left Down").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left Down").position;
-                SpawnChunk();
-            }
-
         }
     }
 
-    void SpawnChunk()
+    void SpawnChunk(Vector3 position)
     {
-        int rand = Random.Range(0, terrainChunks.Count);
-        lastestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-        spawnedChunks.Add(lastestChunk);
+        if (spawnedPositions.Contains(position)) return;
+
+        GameObject chunk;
+        if (chunkPool.Count > 0)
+        {
+            chunk = chunkPool.Dequeue();
+            chunk.transform.position = position;
+            chunk.SetActive(true);
+        }
+        else
+        {
+            int rand = Random.Range(0, terrainChunks.Count);
+            chunk = Instantiate(terrainChunks[rand], position, Quaternion.identity);
+        }
+
+        spawnedChunks.Add(chunk);
+        spawnedPositions.Add(position);
+
+        if (spawnedChunks.Count > maxChunks)
+        {
+            RemoveFarthestChunk();
+        }
+    }
+
+    void RemoveFarthestChunk()
+    {
+        float maxDistance = 0;
+        GameObject farthestChunk = null;
+
+        foreach (GameObject chunk in spawnedChunks)
+        {
+            float distance = Vector3.Distance(player.transform.position, chunk.transform.position);
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                farthestChunk = chunk;
+            }
+        }
+
+        if (farthestChunk != null)
+        {
+            spawnedChunks.Remove(farthestChunk);
+            spawnedPositions.Remove(farthestChunk.transform.position);
+            farthestChunk.SetActive(false);
+            chunkPool.Enqueue(farthestChunk);
+        }
     }
 
     void ChunkOptimizer()
     {
-        optimizerCooldown -= Time.deltaTime;
-
-        if (optimizerCooldown <= 0f)
-        {
-            optimizerCooldown = optimizerCooldownDur;   
-        }
-        else
-        {
-            return;
-        }
-
         foreach (GameObject chunk in spawnedChunks)
         {
-            opDist = Vector3.Distance(player.transform.position, chunk.transform.position);
-            if (opDist > maxOpDist)
+            float dist = Vector3.Distance(player.transform.position, chunk.transform.position);
+
+            // Chỉ tắt chunk khi nó ra khỏi vùng đệm
+            if (dist > maxOpDist + bufferZone)
             {
                 chunk.SetActive(false);
             }
-            else { 
+            else if (dist <= maxOpDist)
+            {
                 chunk.SetActive(true);
             }
+        }
+    }
+
+    void ConstrainPlayer()
+    {
+        if (player != null)
+        {
+            Vector3 pos = player.transform.position;
+
+            // Giới hạn trong phạm vi (-50 đến 50)
+            pos.x = Mathf.Clamp(pos.x, -100, 100);
+            pos.y = Mathf.Clamp(pos.y, -100, 100);
+
+            player.transform.position = pos;
         }
     }
 }
