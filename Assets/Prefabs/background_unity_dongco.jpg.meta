@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      background_unity_dongco_0: -3171378081703201058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
