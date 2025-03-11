@@ -12,7 +12,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
     protected float currentCooldownDuration;
     protected int currentPierce;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         if (weaponData == null)
         {
@@ -34,14 +34,25 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
        
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log(currentDamage);
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             enemy.TakeDame(currentDamage);
+
+            KnockBack knockBack = collision.GetComponent<KnockBack>();
+            if (knockBack != null)
+            {
+                knockBack.GetKnockedBack(PlayerController.Instance.transform, 15f);
+            }
+
+            Flash flash = collision.GetComponent<Flash>();
+            if (flash != null)
+            {
+                flash.StartCoroutine(flash.FlashRoutine());
+            }
         }
     }
 }

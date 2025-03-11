@@ -45,6 +45,13 @@ public class ProjectileWeaponBehavior : MonoBehaviour
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             enemy.TakeDame(currentDamage);
+
+            Flash flash = collision.GetComponent<Flash>();
+            if (flash != null)
+            {
+                flash.StartCoroutine(flash.FlashRoutine());
+            }
+
             ReducePiere();
         }
     }
