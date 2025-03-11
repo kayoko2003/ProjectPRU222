@@ -31,5 +31,4 @@ public class EnemyController : MonoBehaviour
         playerS.TakeDamage(damage);
     }
 
-
 }

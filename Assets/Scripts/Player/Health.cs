@@ -1,103 +1,62 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     public int maxHealth;
     [HideInInspector] public int currentHealth;
+
     public HealthBar healthBar;
-    public float safeTimeDuration = 0f;
+
     private float safeTime;
+    public float safeTimeDuration = 0f;
     public bool isDead = false;
 
-    public GameObject GameOverUI; 
-    private SpriteRenderer spriteRenderer;
-    private CameraShake cameraShake; 
+    public bool camShake = false;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        cameraShake = Camera.main.GetComponent<CameraShake>();
-        if (GameOverUI == null)
-        {
-            Debug.LogError("GameOverUI chưa được gán! Hãy kiểm tra trong Inspector.");
-        }
-        else
-        {
-            GameOverUI.SetActive(false);
-        }
 
         if (healthBar != null)
             healthBar.UpdateHealth(currentHealth, maxHealth);
-
-        
     }
 
     public void TakeDam(int damage)
     {
-        if (safeTime > 0 || isDead) return; // Ngăn nhận sát thương nếu đã chết
+        /*if (safeTime <= 0)
+        {*/
+            currentHealth -= damage;
 
-        currentHealth -= damage;
-
-        if (!isDead && cameraShake != null) // Kiểm tra trước khi rung
-        {
-            StopAllCoroutines(); // Dừng tất cả coroutine đang chạy
-            StartCoroutine(cameraShake.Shake(0.05f, 0.1f));
-        }
-
-        FlashRed();
-
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            isDead = true;
-
-            if (gameObject.CompareTag("Player"))
+            if (currentHealth <= 0)
             {
-                Die();
+                currentHealth = 0;
+                if (this.gameObject.tag == "Enemy")
+                {
+                   /* FindObjectOfType<WeaponManager>().RemoveEnemyToFireRange(this.transform);
+                    FindObjectOfType<Killed>().UpdateKilled();
+                    FindObjectOfType<PlayerExp>().UpdateExperience(UnityEngine.Random.Range(1, 4));*/
+                    Destroy(this.gameObject, 0.125f);
+                }
+                isDead = true;
             }
-            else if (gameObject.CompareTag("Enemy"))
-            {
-                Destroy(gameObject, 0.125f);
-            }
-        }
 
-        if (healthBar != null)
-            healthBar.UpdateHealth(currentHealth, maxHealth);
+            // If player then update health bar
+            if (healthBar != null)
+                healthBar.UpdateHealth(currentHealth, maxHealth);
 
-        safeTime = safeTimeDuration;
+            safeTime = safeTimeDuration;
+        
     }
 
-
-
-    private void Die()
+    private void Update()
     {
-        StopAllCoroutines(); // Dừng tất cả coroutine đang chạy, bao gồm camera shake
-
-        if (GameOverUI != null && !GameOverUI.activeSelf)
+        if (safeTime > 0)
         {
-            GameOverUI.SetActive(true);
-            Time.timeScale = 0f; // Dừng game
+            safeTime -= Time.deltaTime;
         }
-
-        GetComponent<PlayerController>().enabled = false; // Vô hiệu hóa điều khiển nhân vật
-    }
-
-
-    private void FlashRed()
-    {
-        if (spriteRenderer != null)
-        {
-            StartCoroutine(FlashEffect());
-        }
-    }
-
-    private IEnumerator FlashEffect()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(1f);
-        spriteRenderer.color = Color.white;
     }
 }
