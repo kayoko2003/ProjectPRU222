@@ -77,10 +77,4 @@ public class PlayerController : MonoBehaviour
     {
         playerHealth.TakeDam(damage);
     }
-
-    public void DisableControls()
-    {
-        playerControls.Disable();
-    }
-
 }
