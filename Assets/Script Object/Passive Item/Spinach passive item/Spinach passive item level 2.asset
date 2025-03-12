@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90047813c357744ca75d8eb88deb185, type: 3}
-  m_Name: Knife weapon
+  m_Script: {fileID: 11500000, guid: b38ce99ca0624dd4482f93769d14ee15, type: 3}
+  m_Name: Spinach passive item level 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7668260203367023400, guid: e22829aea38f5ff41b8b4f495dc79ab0, type: 3}
-  damage: 5
-  speed: 10
-  cooldownDuration: 2
-  pierce: 1
+  multipler: 150
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: -6180373133180794851, guid: ea5fcfd45d1464045b2316febc24ec7c, type: 3}

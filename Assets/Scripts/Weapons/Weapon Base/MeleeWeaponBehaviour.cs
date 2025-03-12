@@ -28,6 +28,11 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         currentPierce = weaponData.Pierce;
     }
 
+    public float getCurrentDamage()
+    {
+        return currentDamage *= UnityEngine.Object.FindAnyObjectByType<PlayerStats>().CurrentMight;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
@@ -40,7 +45,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
-            enemy.TakeDame(currentDamage);
+            enemy.TakeDame(getCurrentDamage());
 
             KnockBack knockBack = collision.GetComponent<KnockBack>();
             if (knockBack != null)
@@ -58,7 +63,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out BreakableProps breakable))
             {
-                breakable.TakeDamage(currentDamage);
+                breakable.TakeDamage(getCurrentDamage());
             }
         }
     }
