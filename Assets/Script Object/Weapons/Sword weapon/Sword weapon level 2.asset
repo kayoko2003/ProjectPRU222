@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90047813c357744ca75d8eb88deb185, type: 3}
+  m_Name: Sword weapon level 2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1437033923941116287, guid: 2df4a9a02dea16d44a87e49780ac0abf, type: 3}
+  damage: 20
+  speed: 0
+  cooldownDuration: 1.5
+  pierce: 1
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: 712035800519618848, guid: b50a8921497f3244495d9f4d7ff86e16, type: 3}

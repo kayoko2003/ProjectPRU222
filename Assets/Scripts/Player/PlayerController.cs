@@ -49,6 +49,11 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerInput()
     {
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
         movement = playerControls.Movement.Move.ReadValue<Vector2>(); 
 
         myAnimator.SetFloat("moveX", movement.x); 
@@ -57,11 +62,21 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * (playerStats.currentMoveSpeed * Time.deltaTime));
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
+        rb.MovePosition(rb.position + movement * (playerStats.CurrentMoveSpeed * Time.deltaTime));
     }
 
     private void AdjustPlayerFacingDirection()
     {
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
