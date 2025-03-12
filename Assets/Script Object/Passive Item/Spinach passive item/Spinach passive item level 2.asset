@@ -15,4 +15,6 @@ MonoBehaviour:
   multipler: 150
   level: 2
   nextLevelPrefab: {fileID: 0}
+  name: Spinach level 2
+  description: Increase attack damage
   icon: {fileID: -6180373133180794851, guid: ea5fcfd45d1464045b2316febc24ec7c, type: 3}

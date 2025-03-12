@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b90047813c357744ca75d8eb88deb185, type: 3}
-  m_Name: Knife weapon
+  m_Name: Knife weapon level 3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7668260203367023400, guid: e22829aea38f5ff41b8b4f495dc79ab0, type: 3}
-  damage: 5
-  speed: 10
-  cooldownDuration: 2
+  prefab: {fileID: 7668260203367023400, guid: 4cd0921988801fd46b7f581d64d7a3c2, type: 3}
+  damage: 15
+  speed: 20
+  cooldownDuration: 1
   pierce: 1
-  level: 1
-  nextLevelPrefab: {fileID: 5136124389511208616, guid: 2ff2ee5c69f80e54183dd7f646a63dcb, type: 3}
-  name: Knife
-  description: Long range attack, throws knives at enemies
+  level: 3
+  nextLevelPrefab: {fileID: 0}
+  name: Knife level 3
+  description: Damage increase, cooldown decrease
   icon: {fileID: -1324318189544361227, guid: ea5fcfd45d1464045b2316febc24ec7c, type: 3}
