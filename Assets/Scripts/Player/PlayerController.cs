@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
 
     private bool facingLeft = false;
 
-    public CharacterScriptableObject characterData;
+    PlayerStats playerStats;
+
+    void Start()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
 
     private void Awake()
     {
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * (characterData.MoveSpeed * Time.deltaTime));
+        rb.MovePosition(rb.position + movement * (playerStats.currentMoveSpeed * Time.deltaTime));
     }
 
     private void AdjustPlayerFacingDirection()

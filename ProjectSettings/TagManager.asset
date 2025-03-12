@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Sword
+  - Prop
   layers:
   - Default
   - TransparentFX

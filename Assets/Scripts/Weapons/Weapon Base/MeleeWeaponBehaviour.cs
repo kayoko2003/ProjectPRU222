@@ -54,5 +54,12 @@ public class MeleeWeaponBehaviour : MonoBehaviour
                 flash.StartCoroutine(flash.FlashRoutine());
             }
         }
+        else if (collision.CompareTag("Prop"))
+        {
+            if (collision.gameObject.TryGetComponent(out BreakableProps breakable))
+            {
+                breakable.TakeDamage(currentDamage);
+            }
+        }
     }
 }
