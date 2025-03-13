@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ac9a5d67379fb4595d61af4fc66cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 422fc1dfd9ca9864f91c971ecc81bd0b, type: 2}
+  weaponData: {fileID: 11400000, guid: bc31cf55ebe16e046892c2bcdb26da8c, type: 2}
   destroyAfterSeconds: 3
   offsetAngle: -45
 --- !u!60 &6654326811230566230

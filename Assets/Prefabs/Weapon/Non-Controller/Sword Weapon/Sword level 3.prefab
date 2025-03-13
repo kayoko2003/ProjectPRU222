@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94e0645f80e6ee4e87b916057f9615f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 6e4810a06225891408dd2f810f266985, type: 2}
+  weaponData: {fileID: 11400000, guid: 13bd80572f737ce4b8a6f3df6d89d814, type: 2}
   destroyAfterSeconds: 0.3
   slashAnimaPrefab: {fileID: 7999986706815826043, guid: b5b092902fdf9054a9b78b0795c7de9a, type: 3}
   slashAnimSpawnPoint: {fileID: 7734697491782112216}

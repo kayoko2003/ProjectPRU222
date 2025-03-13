@@ -20,6 +20,12 @@ public class TreasureChest : MonoBehaviour
 
     public void OpenTreasureChest()
     {
+        if(inventoryManager.GetPossibleEvolutions().Count <= 0)
+        {
+            return;
+        }
 
+        WeaponEvolutionBlueprint toEvolve = inventoryManager.GetPossibleEvolutions()[Random.Range(0, inventoryManager.GetPossibleEvolutions().Count)];
+        inventoryManager.EvolWeapon(toEvolve);
     }
 }

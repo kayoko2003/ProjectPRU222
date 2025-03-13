@@ -3,14 +3,13 @@
 public class EnemyMovement : MonoBehaviour
 {
     Transform player;
-    private Rigidbody2D rb;
-    private KnockBack knockBack;
     EnemyStats enemyStats;
+
+    Vector2 knockbackVelocity;
+    float knockbackDuration;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        knockBack = GetComponent<KnockBack>();
         enemyStats = GetComponent<EnemyStats>();
 
         PlayerController playerController = Object.FindFirstObjectByType<PlayerController>();
@@ -24,13 +23,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        // Nếu enemy không đang bị knockback, thì mới di chuyển về phía player.
-        if (knockBack == null || !knockBack.gettingKnockedBack)
+        if (knockbackDuration > 0)
         {
-            Vector2 newPosition = Vector2.MoveTowards(rb.position, player.position, enemyStats.currentMoveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(newPosition);
+            transform.position += (Vector3)knockbackVelocity * Time.deltaTime;
+            knockbackDuration -= Time.deltaTime;
         }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyStats.currentMoveSpeed * Time.deltaTime);
+        }
+    }
+
+    public void KnockBack(Vector2 velocity, float duration)
+    {
+        if (knockbackDuration > 0)
+        {
+            return;
+        }
+
+        knockbackVelocity = velocity;
+        knockbackDuration = duration;
     }
 }
