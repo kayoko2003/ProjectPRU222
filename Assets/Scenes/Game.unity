@@ -3406,6 +3406,7 @@ GameObject:
   - component: {fileID: 749504500}
   - component: {fileID: 749504501}
   - component: {fileID: 749504502}
+  - component: {fileID: 749504503}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3608,6 +3609,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd458ec8edcbe124abc136f7b73bd92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseStats:
+    maxHealth: 0
+    recovery: 0
+    moveSpeed: 0
+    might: 0
+    speed: 0
+    magnet: 0
+  actualStats:
+    maxHealth: 0
+    recovery: 0
+    moveSpeed: 0
+    might: 0
+    speed: 0
+    magnet: 0
+  damageEffect: {fileID: 5458278770810531782, guid: 0567775165f3bbc41a256655790961f2, type: 3}
   experience: 0
   level: 1
   experienceCap: 0
@@ -3631,7 +3647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749504493}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 731ee196535c83b49a638dce7e79767a, type: 3}
   m_Name: 
@@ -3699,6 +3715,48 @@ MonoBehaviour:
     upgradeButton: {fileID: 323518349}
   weaponEvolutions:
   - {fileID: 11400000, guid: 4db14b29caf8b584b993c6802ca7508e, type: 2}
+--- !u!114 &749504503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749504493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded83349ee798aa4e98e944d8dde865e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlots:
+  - item: {fileID: 0}
+    image: {fileID: 1845984763}
+  - item: {fileID: 0}
+    image: {fileID: 1426405859}
+  - item: {fileID: 0}
+    image: {fileID: 923728214}
+  - item: {fileID: 0}
+    image: {fileID: 1253770554}
+  - item: {fileID: 0}
+    image: {fileID: 591601505}
+  - item: {fileID: 0}
+    image: {fileID: 1431758829}
+  passiveSlots:
+  - item: {fileID: 0}
+    image: {fileID: 2032180504}
+  - item: {fileID: 0}
+    image: {fileID: 23928722}
+  - item: {fileID: 0}
+    image: {fileID: 229603745}
+  - item: {fileID: 0}
+    image: {fileID: 606150520}
+  - item: {fileID: 0}
+    image: {fileID: 311252766}
+  - item: {fileID: 0}
+    image: {fileID: 1028010261}
+  availableWeapons:
+  - {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
+  availablePassives: []
+  upgradeUIOptions: []
 --- !u!1 &858867855
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,7 +4799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb62e82d3e2fc6d4195b2415399fba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullSpeed: 300
+  pullSpeed: 10
 --- !u!1 &1009221064
 GameObject:
   m_ObjectHideFlags: 0
@@ -7374,6 +7432,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   previousState: 0
+  damageTextCanvas: {fileID: 878181738}
+  textFontSize: 40
+  textFont: {fileID: 0}
+  referenceCamera: {fileID: 519420031}
   pauseScreen: {fileID: 1709282316}
   resultsScreen: {fileID: 367332646}
   levelUpScreen: {fileID: 1930929655}
@@ -7401,7 +7463,7 @@ MonoBehaviour:
   - {fileID: 529427643}
   - {fileID: 417196133}
   - {fileID: 556893719}
-  timeLimit: 60
+  timeLimit: 120
   stopwatchDisplay: {fileID: 1132797422}
   isGameOver: 0
   choosingUpgrade: 0

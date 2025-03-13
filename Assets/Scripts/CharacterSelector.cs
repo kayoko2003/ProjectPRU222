@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterSelector : MonoBehaviour
 {
     public static CharacterSelector instance;
-    public CharacterScriptableObject characterData;
+    public CharacterData characterData;
 
     void Awake()
     {
@@ -18,12 +18,24 @@ public class CharacterSelector : MonoBehaviour
         }
     }
 
-    public static CharacterScriptableObject GetData()
+    public static CharacterData GetData()
     {
-        return instance.characterData;
+        if (instance && instance.characterData)
+        {
+            return instance.characterData;
+        }
+        else
+        {
+            CharacterData[] character = Resources.FindObjectsOfTypeAll<CharacterData>();
+            if (character.Length > 0)
+            {
+                return character[Random.Range(0, character.Length)];
+            }
+        }
+        return null;
     }
 
-    public void SelectCharactor(CharacterScriptableObject character)
+    public void SelectCharactor(CharacterData character)
     {
         characterData = character;
     }
