@@ -663,10 +663,11 @@ GameObject:
   - component: {fileID: 6516365195333300061}
   - component: {fileID: 7264425183898899552}
   - component: {fileID: 8920640475496711836}
+  - component: {fileID: 5877008922851091897}
   - component: {fileID: 5882393400173689569}
   - component: {fileID: 1888710444133921760}
-  - component: {fileID: 2378314312213582984}
   - component: {fileID: -7604585248230126672}
+  - component: {fileID: 2412222384710807431}
   m_Layer: 0
   m_Name: Boss1.0
   m_TagString: Enemy
@@ -782,6 +783,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5877008922851091897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536772866892587369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b56d5629ab2f8c44a4e277c9b7f9664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 2bfdd685ffb068241b185e4628513beb, type: 2}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  despawnDistance: 20
+  Monster: {fileID: 0}
 --- !u!70 &5882393400173689569
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -834,7 +853,20 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 2
   moveSpeed: 3
---- !u!114 &2378314312213582984
+--- !u!114 &-7604585248230126672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536772866892587369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bbcca650e78534c903023de07f329c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops: []
+--- !u!114 &2412222384710807431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -851,19 +883,6 @@ MonoBehaviour:
   currentHealth: 0
   currentDamage: 0
   despawnDistance: 20
---- !u!114 &-7604585248230126672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7536772866892587369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84bbcca650e78534c903023de07f329c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drops: []
 --- !u!1 &7608723041933282917
 GameObject:
   m_ObjectHideFlags: 0

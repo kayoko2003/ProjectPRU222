@@ -103,8 +103,9 @@ GameObject:
   - component: {fileID: 6117081665855520357}
   - component: {fileID: 5743858553640961908}
   - component: {fileID: 9085133754081077309}
+  - component: {fileID: 6205981629590841025}
   - component: {fileID: 1406217479376318387}
-  - component: {fileID: 4167928945325846520}
+  - component: {fileID: -2667715227259473998}
   m_Layer: 0
   m_Name: Boss1.1
   m_TagString: Enemy
@@ -271,6 +272,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops: []
+--- !u!114 &6205981629590841025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810340159423174002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b56d5629ab2f8c44a4e277c9b7f9664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 2bfdd685ffb068241b185e4628513beb, type: 2}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  despawnDistance: 20
+  Monster: {fileID: 0}
 --- !u!114 &1406217479376318387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +305,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 2
   moveSpeed: 3
---- !u!114 &4167928945325846520
+--- !u!114 &-2667715227259473998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

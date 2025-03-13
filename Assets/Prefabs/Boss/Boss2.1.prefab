@@ -220,9 +220,10 @@ GameObject:
   - component: {fileID: 7458517659242822011}
   - component: {fileID: 7711910972297389685}
   - component: {fileID: 1369895811211171137}
-  - component: {fileID: 6375732233692125665}
   - component: {fileID: 2096218584171818260}
+  - component: {fileID: 6375732233692125665}
   - component: {fileID: 691520586388144921}
+  - component: {fileID: -6192202735612040947}
   m_Layer: 0
   m_Name: Boss2.1
   m_TagString: Enemy
@@ -376,21 +377,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.5, y: 2.5}
   m_Size: {x: 6, y: 5}
   m_Direction: 1
---- !u!114 &6375732233692125665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165626465338166580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213deaf4585005b4ab786371f81ca8c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 2
-  attackCooldown: 2
-  moveSpeed: 3
 --- !u!114 &2096218584171818260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +394,21 @@ MonoBehaviour:
   currentHealth: 0
   currentDamage: 0
   despawnDistance: 20
+--- !u!114 &6375732233692125665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165626465338166580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213deaf4585005b4ab786371f81ca8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
+  attackCooldown: 2
+  moveSpeed: 3
 --- !u!114 &691520586388144921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +422,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops: []
+--- !u!114 &-6192202735612040947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165626465338166580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b56d5629ab2f8c44a4e277c9b7f9664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 2bfdd685ffb068241b185e4628513beb, type: 2}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  despawnDistance: 20
 --- !u!1 &1609571857755962702
 GameObject:
   m_ObjectHideFlags: 0

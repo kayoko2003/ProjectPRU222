@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 8815972557240640556}
   - component: {fileID: -6525909058750097054}
   - component: {fileID: -4229444116874504139}
-  - component: {fileID: -9105012721536626245}
+  - component: {fileID: -7984280683573180413}
   m_Layer: 0
   m_Name: Boss2.0
   m_TagString: Enemy
@@ -966,7 +966,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 2
   moveSpeed: 3
---- !u!114 &-9105012721536626245
+--- !u!114 &-7984280683573180413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed47822b4defb348b110d31b2246bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 2bfdd685ffb068241b185e4628513beb, type: 2}
+  enemyData: {fileID: 0}
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0

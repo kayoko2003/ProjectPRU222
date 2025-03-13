@@ -1,7 +1,8 @@
 using Assets.FantasyMonsters.Scripts;
+using System.Collections;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour
+public class BossStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
 
@@ -34,12 +35,13 @@ public class EnemyStats : MonoBehaviour
             ReturnEnemy();
         }
     }
-
+    public Monster Monster;
     public void TakeDame(float dmg)
     {
         currentHealth -= dmg;
         if (currentHealth <= 0)
         {
+            //Monster.Die();
             Kill();
         }
     }
@@ -48,6 +50,8 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+   
 
     private void OnCollisionStay2D(Collision2D collision)
     {

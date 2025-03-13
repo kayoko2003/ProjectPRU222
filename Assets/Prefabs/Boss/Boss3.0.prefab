@@ -902,8 +902,8 @@ GameObject:
   - component: {fileID: 6478221221341996899}
   - component: {fileID: 6744312388719835873}
   - component: {fileID: 5645855510600845067}
-  - component: {fileID: 2689780101511807593}
   - component: {fileID: 8598459303255915827}
+  - component: {fileID: -6663164487708082847}
   m_Layer: 0
   m_Name: Boss3.0
   m_TagString: Enemy
@@ -1072,7 +1072,20 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 2
   moveSpeed: 3
---- !u!114 &2689780101511807593
+--- !u!114 &8598459303255915827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375573782571919297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bbcca650e78534c903023de07f329c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops: []
+--- !u!114 &-6663164487708082847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1089,16 +1102,3 @@ MonoBehaviour:
   currentHealth: 0
   currentDamage: 0
   despawnDistance: 20
---- !u!114 &8598459303255915827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375573782571919297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84bbcca650e78534c903023de07f329c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drops: []

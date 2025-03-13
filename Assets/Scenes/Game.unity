@@ -9380,7 +9380,7 @@ MonoBehaviour:
     - enemyName: Slime
       enemyCount: 3
       spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+      enemyPrefab: {fileID: 7536772866892587369, guid: 2661a7c5e39742b48bf1cdf32fc2f12f, type: 3}
     - enemyName: Slime2
       enemyCount: 3
       spawnCount: 0
