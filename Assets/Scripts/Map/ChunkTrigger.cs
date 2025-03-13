@@ -16,7 +16,10 @@ public class ChunkTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            mc.currentChunk = targetMap;
+            if(mc.currentChunk != targetMap)
+            {
+                mc.currentChunk = targetMap;
+            }
         }
     }
 
