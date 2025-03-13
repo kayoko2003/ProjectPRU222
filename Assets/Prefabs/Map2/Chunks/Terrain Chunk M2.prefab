@@ -7616,6 +7616,8 @@ MonoBehaviour:
   - {fileID: 2708484620756282242}
   - {fileID: 3337051778356243929}
   - {fileID: 1654517330312420636}
+  quicksandSpawnPoints:
+  - {fileID: 6399581386536766026}
   propPrefabs:
   - {fileID: 8350707243655943475, guid: b4759b6704bce944fb03d13d29939c1a, type: 3}
   - {fileID: 6402583716713408178, guid: 451762a672ad6fc4cbc5e10d96ce14f1, type: 3}
@@ -7628,6 +7630,8 @@ MonoBehaviour:
   - {fileID: 7028056598149295001, guid: 57ab0c242cfbe4342bbde3b952cf6c3e, type: 3}
   - {fileID: 5992406859769257828, guid: 00a8e7f4afcb6e94883f7ffbc231a2a3, type: 3}
   - {fileID: 183907634556554425, guid: 271a446a4025cd34a8c23e86f049d2f9, type: 3}
+  quicksandPrefab: {fileID: 3894112191887211612, guid: dcb00dcf75d08fe4a8eecb4b81c84068, type: 3}
+  quicksandSpawnChance: 0.637
 --- !u!61 &2191344957344435504
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7820,7 +7824,39 @@ Transform:
   - {fileID: 6468999181482390689}
   - {fileID: 1993685311281702930}
   - {fileID: 4605131241653634336}
+  - {fileID: 785337446120864461}
   m_Father: {fileID: 7827081822613377253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6399581386536766026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785337446120864461}
+  m_Layer: 0
+  m_Name: Prop Location (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &785337446120864461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399581386536766026}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.09, y: 2.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5585912768984712676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6528628414852363541
 GameObject:

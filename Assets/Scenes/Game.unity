@@ -2374,6 +2374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 749504497}
   offset: {x: 0, y: 0, z: 0}
+  mapSize: 100
 --- !u!1 &529427640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,7 +3612,7 @@ MonoBehaviour:
   experience: 0
   level: 1
   experienceCap: 0
-  invincibilityDuration: 0.5
+  invincibilityDuration: 0
   levelRanges:
   - startLevel: 1
     endLevel: 3
@@ -3621,9 +3622,9 @@ MonoBehaviour:
     experienceCapIncrease: 200
   weaponIndex: 0
   passiveItemIndex: 0
-  healthBar: {fileID: 1531372050}
-  expBar: {fileID: 1564503960}
-  levelText: {fileID: 1996697500}
+  healthBar: {fileID: 0}
+  expBar: {fileID: 0}
+  levelText: {fileID: 0}
 --- !u!114 &749504502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4602,18 +4603,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainChunks:
-  - {fileID: 4468799876558687372, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
-  - {fileID: 4468799876558687372, guid: 7e2240659f009f14caaebfe7973c6c8d, type: 3}
-  - {fileID: 4468799876558687372, guid: 5de853381d5d21643b265a9524dfa66a, type: 3}
+  - {fileID: 4902046229146384558, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+  - {fileID: 4902046229146384558, guid: 3a1e1c4acf7df884e801f8223ac9db4a, type: 3}
+  - {fileID: 4902046229146384558, guid: 21f35cb1618b6fe4190bd0740f3743c6, type: 3}
   player: {fileID: 749504493}
   checkerRadius: 3
   terrainMask:
     serializedVersion: 2
     m_Bits: 64
   currentChunk: {fileID: 0}
-  spawnedChunks: []
   maxOpDist: 30.9
-  optimizerCooldownDur: 1
+  bufferZone: 50
+  maxSpawnPerFrame: 6
+  chunkSize: 10
 --- !u!4 &962263844
 Transform:
   m_ObjectHideFlags: 0
@@ -4741,7 +4743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb62e82d3e2fc6d4195b2415399fba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullSpeed: 300
+  pullSpeed: 0
 --- !u!1 &1009221064
 GameObject:
   m_ObjectHideFlags: 0
@@ -8335,6 +8337,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759061329}
   m_CullTransparentMesh: 1
+--- !u!1001 &1797149336
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4902046229146384558, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_Name
+      value: Terrain Chunk M2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902046229146384558, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241636839062395934, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: quicksandSpawnChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827081822613377253, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
 --- !u!1 &1803509585
 GameObject:
   m_ObjectHideFlags: 0
@@ -9345,6 +9412,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930929655}
   m_CullTransparentMesh: 1
+--- !u!1001 &1963220289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902882420430213344, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_Name
+      value: Terrain Chunk M3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
 --- !u!1 &1976136034
 GameObject:
   m_ObjectHideFlags: 0
@@ -9376,57 +9504,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave1
-    enemyGroup:
-    - enemyName: Slime
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 7536772866892587369, guid: 2661a7c5e39742b48bf1cdf32fc2f12f, type: 3}
-    - enemyName: Slime2
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
-    - enemyName: Slime3
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
-    waveQuota: 0
-    spawnInterval: 1
-    spawnCount: 0
-  - waveName: Wave2
-    enemyGroup:
-    - enemyName: Slime
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 7536772866892587369, guid: 2661a7c5e39742b48bf1cdf32fc2f12f, type: 3}
-    - enemyName: Slime2
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
-    - enemyName: Slime3
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
-    waveQuota: 0
-    spawnInterval: 1
-    spawnCount: 0
-  - waveName: Wave2
-    enemyGroup:
-    - enemyName: Slime
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 7536772866892587369, guid: 2661a7c5e39742b48bf1cdf32fc2f12f, type: 3}
-    - enemyName: Slime2
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
-    - enemyName: Slime3
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
-    waveQuota: 0
-    spawnInterval: 1
-    spawnCount: 0
-  - waveName: Wave2
     enemyGroup:
     - enemyName: Slime
       enemyCount: 3
@@ -9530,9 +9607,9 @@ MonoBehaviour:
     spawnCount: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 20
+  maxEnemiesAllowed: 0
   maxEnemiesReached: 0
-  waveInterval: 3
+  waveInterval: 0
   relativeSpawnPoint:
   - {fileID: 1261828414}
   - {fileID: 2037546899}
@@ -10721,7 +10798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4468799876558687372, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5048510367185223279, guid: b89201a8eb158af4288de4c607c5b923, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12368,3 +12445,5 @@ SceneRoots:
   - {fileID: 1275629263}
   - {fileID: 1551334622}
   - {fileID: 2731714540164331613}
+  - {fileID: 1797149336}
+  - {fileID: 1963220289}
