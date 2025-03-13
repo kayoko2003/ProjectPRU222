@@ -7,11 +7,10 @@ public class MapController : MonoBehaviour
     public List<GameObject> terrainChunks;
     public GameObject player;
     public float checkerRadius;
-    Vector3 noTerrainPosition;
 
     public LayerMask terrainMask;
     public GameObject currentChunk;
-    PlayerController playerController;
+    Vector3 playerLastPosition;
 
     public List<GameObject> spawnedChunks;
     GameObject lastestChunk;
@@ -22,7 +21,7 @@ public class MapController : MonoBehaviour
 
     void Start()
     {
-        playerController = Object.FindFirstObjectByType<PlayerController>();
+        playerLastPosition = player.transform.position;
     }
 
     void Update()
@@ -38,84 +37,82 @@ public class MapController : MonoBehaviour
             return;
         }
 
-        if(playerController.movement.x > 0 &&  playerController.movement.y == 0)
-        {
-            if(!Physics2D.OverlapCircle(currentChunk.transform.Find("Right").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Right").position;
-                SpawnChunk();
-            }
+        Vector3 moveDir = player.transform.position - playerLastPosition;
+        playerLastPosition = player.transform.position;
 
+        string directionName = GetDirectionName(moveDir);
+
+        CheckAndSpawnChunk(directionName);
+
+        if (directionName.Contains("Up"))
+        {
+            CheckAndSpawnChunk("Up");
         }
-        else if (playerController.movement.x < 0 && playerController.movement.y == 0)
+        if (directionName.Contains("Down"))
         {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left").position;
-                SpawnChunk();
-            }
-
+            CheckAndSpawnChunk("Down");
         }
-        else if (playerController.movement.x == 0 && playerController.movement.y > 0)
+        if (directionName.Contains("Right"))
         {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Up").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Up").position;
-                SpawnChunk();
-            }
-
+            CheckAndSpawnChunk("Right");
         }
-        else if (playerController.movement.x == 0 && playerController.movement.y < 0)
+        if (directionName.Contains("Left"))
         {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Down").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Down").position;
-                SpawnChunk();
-            }
-
+            CheckAndSpawnChunk("Left");
         }
-        else if (playerController.movement.x > 0 && playerController.movement.y > 0)
+        if (directionName.Contains("Up"))
         {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Right Up").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Right Up").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x > 0 && playerController.movement.y < 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Right Down").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Right Down").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x < 0 && playerController.movement.y > 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left Up").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left Up").position;
-                SpawnChunk();
-            }
-
-        }
-        else if (playerController.movement.x < 0 && playerController.movement.y < 0)
-        {
-            if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Left Down").position, checkerRadius, terrainMask))
-            {
-                noTerrainPosition = currentChunk.transform.Find("Left Down").position;
-                SpawnChunk();
-            }
-
+            CheckAndSpawnChunk("Up");
         }
     }
 
-    void SpawnChunk()
+    void CheckAndSpawnChunk(string direction)
+    {
+        if (!Physics2D.OverlapCircle(currentChunk.transform.Find(direction).position, checkerRadius, terrainMask))
+        {
+            SpawnChunk(currentChunk.transform.Find(direction).position);
+        }
+    }
+
+    string GetDirectionName(Vector3 dir)
+    {
+        dir = dir.normalized;
+
+        if(Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if(dir.y > 0.5f)
+            {
+                return dir.x > 0 ? "Right Up" : "Left Up";   
+            }else if(dir.y < -0.5f)
+            {
+                return dir.x > 0 ? "Right Down" : "Left Down";
+            }
+            else
+            {
+                return dir.x > 0 ? "Right" : "Left";
+            }
+        }
+        else
+        {
+            if(dir.x > 0.5)
+            {
+                return dir.y > 0 ? "Right Up" : "Right Down";
+            }
+            else if(dir.x < -0.5)
+            {
+                return dir.y > 0 ? "Left Up" : "Left Down";
+            }
+            else
+            {
+                return dir.y > 0 ? "Up" : "Down";
+            }
+        }
+    }
+
+    void SpawnChunk(Vector3 spawnPosition)
     {
         int rand = Random.Range(0, terrainChunks.Count);
-        lastestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+        lastestChunk = Instantiate(terrainChunks[rand], spawnPosition, Quaternion.identity);
         spawnedChunks.Add(lastestChunk);
     }
 

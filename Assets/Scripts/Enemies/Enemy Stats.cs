@@ -1,3 +1,4 @@
+using Assets.FantasyMonsters.Scripts;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
@@ -42,10 +43,10 @@ public class EnemyStats : MonoBehaviour
             Kill();
         }
     }
-
     public void Kill()
     {
         Destroy(gameObject);
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)

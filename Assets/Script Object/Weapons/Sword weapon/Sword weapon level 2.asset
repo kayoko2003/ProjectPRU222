@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90047813c357744ca75d8eb88deb185, type: 3}
   m_Name: Sword weapon level 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1437033923941116287, guid: 2df4a9a02dea16d44a87e49780ac0abf, type: 3}
+  prefab: {fileID: 1437033923941116287, guid: 33cb991604fc34a42a3b823633f778a3, type: 3}
   damage: 20
   speed: 0
   cooldownDuration: 1.5
   pierce: 1
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 8114236890385247265, guid: 9760f60477cf911419e76a8af22319a4, type: 3}
+  name: Sword level 2
+  description: Damage increased, slash time reduced
   icon: {fileID: 712035800519618848, guid: b50a8921497f3244495d9f4d7ff86e16, type: 3}
