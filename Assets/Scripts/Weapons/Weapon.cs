@@ -9,6 +9,7 @@ public abstract class Weapon : Item
 
         [Header("Visuals")]
         public Projectile projectilePrefab;
+        public Aura auraPrefab;
         public ParticleSystem hitEffect;
         public Rect spawnVariance;
 

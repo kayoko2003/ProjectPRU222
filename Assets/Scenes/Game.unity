@@ -3755,8 +3755,28 @@ MonoBehaviour:
     image: {fileID: 1028010261}
   availableWeapons:
   - {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
-  availablePassives: []
-  upgradeUIOptions: []
+  - {fileID: 11400000, guid: 0c920f2c8344fbb4d803b185198611c1, type: 2}
+  availablePassives:
+  - {fileID: 11400000, guid: 785ced5f6841d9b43aa1694e08dc2339, type: 2}
+  - {fileID: 11400000, guid: d94211634a6f7004faceda6875ec0562, type: 2}
+  - {fileID: 11400000, guid: 2311691cdde2ee84fa7b202dd56bfb9a, type: 2}
+  upgradeUIOptions:
+  - upgradeNameDisplay: {fileID: 158846355}
+    upgradeDescriptionDisplay: {fileID: 2003661400}
+    upgradeIcon: {fileID: 2109170841}
+    upgradeButton: {fileID: 88442888}
+  - upgradeNameDisplay: {fileID: 13585793}
+    upgradeDescriptionDisplay: {fileID: 1374458335}
+    upgradeIcon: {fileID: 862556232}
+    upgradeButton: {fileID: 1891553586}
+  - upgradeNameDisplay: {fileID: 913033307}
+    upgradeDescriptionDisplay: {fileID: 1009221068}
+    upgradeIcon: {fileID: 875063016}
+    upgradeButton: {fileID: 90912988}
+  - upgradeNameDisplay: {fileID: 549013493}
+    upgradeDescriptionDisplay: {fileID: 1803509589}
+    upgradeIcon: {fileID: 1666570059}
+    upgradeButton: {fileID: 323518349}
 --- !u!1 &858867855
 GameObject:
   m_ObjectHideFlags: 0

@@ -155,7 +155,7 @@ public class PlayerInventory : MonoBehaviour
         if(weaponType != null)
         {
             GameObject go = new GameObject(data.baseStarts.name + " Controller");
-            Weapon spawnedWeapon = (Weapon)go.AddComponent<Weapon>();
+            Weapon spawnedWeapon = (Weapon)go.AddComponent(weaponType);
             spawnedWeapon.Initialise(data);
             spawnedWeapon.transform.SetParent(transform);
             spawnedWeapon.transform.localPosition = Vector2.zero;
@@ -287,7 +287,7 @@ public class PlayerInventory : MonoBehaviour
                     EnebleUpgradeUI(upgradeOption);
 
                     bool isLevelUp = false;
-                    for(int i = 0; i < weaponSlots.Count; i++)
+                    for (int i = 0; i < weaponSlots.Count; i++)
                     {
                         Weapon w = weaponSlots[i].item as Weapon;
                         if(w != null && w.data == chosenWeaponUpgrade)

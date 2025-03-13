@@ -64,7 +64,8 @@ public class ProjectileWeapon : Weapon
 
     protected virtual float GetSpawnAngle()
     {
-        return Mathf.Atan2(movement.movement.y, movement.movement.x) * Mathf.Rad2Deg;
+        Vector2 playerMovement = PlayerController.Instance.movement;
+        return Mathf.Atan2(playerMovement.y, playerMovement.x) * Mathf.Rad2Deg; 
     }
 
     protected virtual Vector2 GetSpawnOffset(float spawnAngle = 0)
