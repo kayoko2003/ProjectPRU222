@@ -2848,6 +2848,75 @@ MonoBehaviour:
   - {fileID: 606150520}
   - {fileID: 311252766}
   - {fileID: 1028010261}
+--- !u!1001 &823636291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2858944375738770869, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 939551e2a66029342ba9d5147c0b74ac, type: 2}
+    - target: {fileID: 3896297766536218951, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_Name
+      value: Zombie4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917677854292279739, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109100638745794887, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1782705385, guid: d33598d781682e049a53a0a13104ef29, type: 3}
+    - target: {fileID: 6586824780310567926, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b6c5af497bd14d84e8df8c3a13864fb0, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3994b32cd849b594a817cbd87cbca202, type: 3}
 --- !u!1 &865924120
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,10 +6226,10 @@ MonoBehaviour:
   waves:
   - waveName: Wave1
     enemyGroup:
-    - enemyName: Slime
+    - enemyName: Bat
       enemyCount: 3
       spawnCount: 0
-      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+      enemyPrefab: {fileID: 654522798008217366, guid: fda51ac9c57a53d449fadec00975ad16, type: 3}
     - enemyName: Slime2
       enemyCount: 3
       spawnCount: 0
@@ -8333,3 +8402,4 @@ SceneRoots:
   - {fileID: 878181739}
   - {fileID: 1275629263}
   - {fileID: 1551334622}
+  - {fileID: 823636291}
