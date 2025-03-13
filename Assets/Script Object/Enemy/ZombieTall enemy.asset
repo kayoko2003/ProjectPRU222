@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ca269f6f2a5f445b5a0235208ca911, type: 3}
   m_Name: ZombieTall enemy
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 2
   maxHealth: 0
   damage: 0
