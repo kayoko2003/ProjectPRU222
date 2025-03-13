@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6525004548561949357}
   - component: {fileID: 3219614055937163527}
   - component: {fileID: 1524542192303206849}
-  - component: {fileID: 8393576019722514936}
+  - component: {fileID: -1407101930808142142}
   m_Layer: 0
   m_Name: terrain_76
   m_TagString: Untagged
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -1630606112, guid: acaed56baba54d84e8333fc733a7ddc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,65 +127,16 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!60 &8393576019722514936
-PolygonCollider2D:
+--- !u!114 &-1407101930808142142
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8671360297674865645}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.4811573, y: 0.52516365}
-      - {x: 0.22968388, y: 0.5261755}
-      - {x: 0.033823967, y: 0.5218754}
-      - {x: -0.49352264, y: 0.5236759}
-      - {x: -0.5244427, y: 0.505641}
-      - {x: -0.5343561, y: 0.46956444}
-      - {x: -0.5282984, y: 0.41128922}
-      - {x: -0.53416824, y: -0.49884033}
-      - {x: -0.522562, y: -0.528203}
-      - {x: -0.48785973, y: -0.53549194}
-      - {x: 0.5093918, y: -0.5225487}
-      - {x: 0.5263033, y: -0.4754753}
-      - {x: 0.51281166, y: -0.10194874}
-      - {x: 0.5173197, y: 0.42183304}
-      - {x: 0.5128174, y: 0.5012007}
-  m_UseDelaunayMesh: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5567669feb0ef444aa3e1490550b73b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePerSecond: 1

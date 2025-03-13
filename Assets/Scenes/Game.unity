@@ -4603,9 +4603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainChunks:
-  - {fileID: 4902046229146384558, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
-  - {fileID: 4902046229146384558, guid: 3a1e1c4acf7df884e801f8223ac9db4a, type: 3}
-  - {fileID: 4902046229146384558, guid: 21f35cb1618b6fe4190bd0740f3743c6, type: 3}
+  - {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
+  - {fileID: 5047401152791146996, guid: 701cd0631fdc35c489d6c8d6d9294256, type: 3}
+  - {fileID: 5047401152791146996, guid: 59ca0b69a46991846a03af83a08c06dd, type: 3}
   player: {fileID: 749504493}
   checkerRadius: 3
   terrainMask:
@@ -8351,7 +8351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4902046229146384558, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5241636839062395934, guid: 8f1f0e61953a95d449f8852858b30969, type: 3}
       propertyPath: quicksandSpawnChance
@@ -9466,7 +9466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5047401152791146996, guid: c794b3130d3ca3949b7d63b5abb38e36, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
