@@ -1,144 +1,151 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
     public List<GameObject> terrainChunks;
     public GameObject player;
-    public float checkerRadius;
-
+    public float checkerRadius = 50f;
     public LayerMask terrainMask;
     public GameObject currentChunk;
-    Vector3 playerLastPosition;
 
-    public List<GameObject> spawnedChunks;
-    GameObject lastestChunk;
-    public float maxOpDist;
-    float opDist;
-    float optimizerCooldown;
-    public float optimizerCooldownDur;
+    private HashSet<Vector3> spawnedPositions = new HashSet<Vector3>();
+    private List<GameObject> spawnedChunks = new List<GameObject>();
+    private Queue<GameObject> chunkPool = new Queue<GameObject>();
+
+    private int maxChunks = 150;
+    public float maxOpDist = 200f; // Tăng để tránh chunk bị ẩn sớm
+    public float bufferZone = 50f; // Vùng đệm trước khi tắt chunk
+    public int maxSpawnPerFrame = 6;
+    public float chunkSize = 10f;
 
     void Start()
     {
-        playerLastPosition = player.transform.position;
+        for (int i = 0; i < maxChunks; i++)
+        {
+            int rand = Random.Range(0, terrainChunks.Count);
+            GameObject chunk = Instantiate(terrainChunks[rand], Vector3.zero, Quaternion.identity);
+            chunk.SetActive(false);
+            chunkPool.Enqueue(chunk);
+        }
     }
 
     void Update()
     {
         ChunkChecker();
         ChunkOptimizer();
+        ConstrainPlayer();
     }
 
     void ChunkChecker()
     {
-        if (!currentChunk)
-        {
-            return;
-        }
+        if (!currentChunk) return;
 
-        Vector3 moveDir = player.transform.position - playerLastPosition;
-        playerLastPosition = player.transform.position;
+        string[] directionNames = { "Right", "Left", "Up", "Down",
+                                "Right Up", "Right Down", "Left Up", "Left Down" };
 
-        string directionName = GetDirectionName(moveDir);
+        int spawnedCount = 0;
 
-        CheckAndSpawnChunk(directionName);
+        foreach (string dirName in directionNames)
+        {
+            if (spawnedCount >= maxSpawnPerFrame) break;
 
-        if (directionName.Contains("Up"))
-        {
-            CheckAndSpawnChunk("Up");
-        }
-        if (directionName.Contains("Down"))
-        {
-            CheckAndSpawnChunk("Down");
-        }
-        if (directionName.Contains("Right"))
-        {
-            CheckAndSpawnChunk("Right");
-        }
-        if (directionName.Contains("Left"))
-        {
-            CheckAndSpawnChunk("Left");
-        }
-        if (directionName.Contains("Up"))
-        {
-            CheckAndSpawnChunk("Up");
+            Transform checkPoint = currentChunk.transform.Find(dirName);
+            if (checkPoint == null) continue;
+
+            Vector3 spawnPos = checkPoint.position;
+
+            // Giới hạn trong phạm vi 100x100 (từ -50 đến 50)
+            if (Mathf.Abs(spawnPos.x) > 120 || Mathf.Abs(spawnPos.y) > 120) continue;
+
+            if (!spawnedPositions.Contains(spawnPos) &&
+                !Physics2D.OverlapBox(spawnPos, new Vector2(chunkSize, chunkSize), 0, terrainMask))
+            {
+                SpawnChunk(spawnPos);
+                spawnedCount++;
+            }
         }
     }
 
-    void CheckAndSpawnChunk(string direction)
+    void SpawnChunk(Vector3 position)
     {
-        if (!Physics2D.OverlapCircle(currentChunk.transform.Find(direction).position, checkerRadius, terrainMask))
-        {
-            SpawnChunk(currentChunk.transform.Find(direction).position);
-        }
-    }
+        if (spawnedPositions.Contains(position)) return;
 
-    string GetDirectionName(Vector3 dir)
-    {
-        dir = dir.normalized;
-
-        if(Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        GameObject chunk;
+        if (chunkPool.Count > 0)
         {
-            if(dir.y > 0.5f)
-            {
-                return dir.x > 0 ? "Right Up" : "Left Up";   
-            }else if(dir.y < -0.5f)
-            {
-                return dir.x > 0 ? "Right Down" : "Left Down";
-            }
-            else
-            {
-                return dir.x > 0 ? "Right" : "Left";
-            }
+            chunk = chunkPool.Dequeue();
+            chunk.transform.position = position;
+            chunk.SetActive(true);
         }
         else
         {
-            if(dir.x > 0.5)
-            {
-                return dir.y > 0 ? "Right Up" : "Right Down";
-            }
-            else if(dir.x < -0.5)
-            {
-                return dir.y > 0 ? "Left Up" : "Left Down";
-            }
-            else
-            {
-                return dir.y > 0 ? "Up" : "Down";
-            }
+            int rand = Random.Range(0, terrainChunks.Count);
+            chunk = Instantiate(terrainChunks[rand], position, Quaternion.identity);
+        }
+
+        spawnedChunks.Add(chunk);
+        spawnedPositions.Add(position);
+
+        if (spawnedChunks.Count > maxChunks)
+        {
+            RemoveFarthestChunk();
         }
     }
 
-    void SpawnChunk(Vector3 spawnPosition)
+    void RemoveFarthestChunk()
     {
-        int rand = Random.Range(0, terrainChunks.Count);
-        lastestChunk = Instantiate(terrainChunks[rand], spawnPosition, Quaternion.identity);
-        spawnedChunks.Add(lastestChunk);
+        float maxDistance = 0;
+        GameObject farthestChunk = null;
+
+        foreach (GameObject chunk in spawnedChunks)
+        {
+            float distance = Vector3.Distance(player.transform.position, chunk.transform.position);
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                farthestChunk = chunk;
+            }
+        }
+
+        if (farthestChunk != null)
+        {
+            spawnedChunks.Remove(farthestChunk);
+            spawnedPositions.Remove(farthestChunk.transform.position);
+            farthestChunk.SetActive(false);
+            chunkPool.Enqueue(farthestChunk);
+        }
     }
 
     void ChunkOptimizer()
     {
-        optimizerCooldown -= Time.deltaTime;
-
-        if (optimizerCooldown <= 0f)
-        {
-            optimizerCooldown = optimizerCooldownDur;   
-        }
-        else
-        {
-            return;
-        }
-
         foreach (GameObject chunk in spawnedChunks)
         {
-            opDist = Vector3.Distance(player.transform.position, chunk.transform.position);
-            if (opDist > maxOpDist)
+            float dist = Vector3.Distance(player.transform.position, chunk.transform.position);
+
+            // Chỉ tắt chunk khi nó ra khỏi vùng đệm
+            if (dist > maxOpDist + bufferZone)
             {
                 chunk.SetActive(false);
             }
-            else { 
+            else if (dist <= maxOpDist)
+            {
                 chunk.SetActive(true);
             }
+        }
+    }
+
+    void ConstrainPlayer()
+    {
+        if (player != null)
+        {
+            Vector3 pos = player.transform.position;
+
+            // Giới hạn trong phạm vi (-50 đến 50)
+            pos.x = Mathf.Clamp(pos.x, -100, 100);
+            pos.y = Mathf.Clamp(pos.y, -100, 100);
+
+            player.transform.position = pos;
         }
     }
 }
