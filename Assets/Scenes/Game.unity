@@ -9495,7 +9495,92 @@ MonoBehaviour:
     waveQuota: 0
     spawnInterval: 2
     spawnCount: 0
-  - waveName: Wave6
+  - waveName: Wave7
+    enemyGroup:
+    - enemyName: Slime
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime2
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime3
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    waveQuota: 0
+    spawnInterval: 2
+    spawnCount: 0
+  - waveName: Wave8
+    enemyGroup:
+    - enemyName: Slime
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime2
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime3
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    waveQuota: 0
+    spawnInterval: 2
+    spawnCount: 0
+  - waveName: Wave9
+    enemyGroup:
+    - enemyName: Slime
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime2
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime3
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    waveQuota: 0
+    spawnInterval: 2
+    spawnCount: 0
+  - waveName: Wave10
+    enemyGroup:
+    - enemyName: Slime
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime2
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime3
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    waveQuota: 0
+    spawnInterval: 2
+    spawnCount: 0
+  - waveName: Wave11
+    enemyGroup:
+    - enemyName: Slime
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime2
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    - enemyName: Slime3
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 3896297766536218951, guid: 04f1f8d242c6bd847afe3810dc528597, type: 3}
+    waveQuota: 0
+    spawnInterval: 2
+    spawnCount: 0
+  - waveName: Wave12
     enemyGroup:
     - enemyName: Slime
       enemyCount: 8
@@ -9514,9 +9599,9 @@ MonoBehaviour:
     spawnCount: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 20
+  maxEnemiesAllowed: 50
   maxEnemiesReached: 0
-  waveInterval: 3
+  waveInterval: 5
   relativeSpawnPoint:
   - {fileID: 1261828414}
   - {fileID: 2037546899}
