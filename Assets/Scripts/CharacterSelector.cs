@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEditor;
+using System.Collections.Generic;
 
 public class CharacterSelector : MonoBehaviour
 {
@@ -26,11 +28,26 @@ public class CharacterSelector : MonoBehaviour
         }
         else
         {
-            CharacterData[] character = Resources.FindObjectsOfTypeAll<CharacterData>();
-            if (character.Length > 0)
+            #if UNITY_EDITOR
+            string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
+            List<CharacterData> characters = new List<CharacterData>();
+            foreach (string assetPath in allAssetPaths)
             {
-                return character[Random.Range(0, character.Length)];
+                if(assetPath.EndsWith(".asset"))
+                {
+                    CharacterData characterData = AssetDatabase.LoadAssetAtPath<CharacterData>(assetPath);
+                    if(characterData != null)
+                    {
+                        characters.Add(characterData);
+                    }    
+                }
             }
+
+            if (characters.Count > 0)
+            {
+                return characters[Random.Range(0, characters.Count)];
+            }
+            #endif
         }
         return null;
     }

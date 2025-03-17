@@ -14,17 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -6180373133180794851, guid: ea5fcfd45d1464045b2316febc24ec7c, type: 3}
   maxLevel: 2
-  evolutionData:
-  - name: Knife + Spinach
-    condition: 0
-    consumption: 0
-    evolutionLevel: 2
-    catalyst:
-    - itemType: {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
-      level: 5
-    outcome:
-      itemType: {fileID: 11400000, guid: 2311691cdde2ee84fa7b202dd56bfb9a, type: 2}
-      level: 1
+  evolutionData: []
   baseStats:
     name: Spinach
     description: Make you like Popeye

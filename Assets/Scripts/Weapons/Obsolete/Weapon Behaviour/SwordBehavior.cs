@@ -41,9 +41,13 @@ public class SwordBehavior : MeleeWeaponBehaviour
 
     public void SwingDownFlipAnimEvent()
     {
-        if (playerController.FacingLeft)
+        if (playerController.lastHorizontalVector < 0)
         {
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            slashAnim.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -124,28 +124,41 @@ public class GameManager : MonoBehaviour
         tmPro.horizontalAlignment = HorizontalAlignmentOptions.Center;
         tmPro.verticalAlignment = VerticalAlignmentOptions.Middle;
         tmPro.fontSize = textFontSize;
-        if(textFont) tmPro.font = textFont;
-        rect.position = referenceCamera.WorldToScreenPoint(target.position);
-
-        Destroy(textObj, duration);
-
-        textObj.transform.SetParent(instance.damageTextCanvas.transform);
-
-        WaitForEndOfFrame w = new WaitForEndOfFrame();
-
-        float t = 0;
-        float yOffset = 0;
-        while(t < duration)
+        if (textFont)
         {
-            yield return w;
+            tmPro.font = textFont;
+        }
+
+        textObj.transform.SetParent(instance.damageTextCanvas.transform, false);
+        textObj.transform.SetSiblingIndex(0);
+        if (target != null)
+        {
+            rect.position = referenceCamera.WorldToScreenPoint(target.position);
+        }
+
+        float t = 0f;
+        float yOffset = 0f;
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+
+        while (t < duration)
+        {
+            yield return wait;
             t += Time.deltaTime;
 
             tmPro.color = new Color(tmPro.color.r, tmPro.color.g, tmPro.color.b, 1 - t / duration);
-
             yOffset += speed * Time.deltaTime;
+
+            if (target == null)
+            {
+                break;
+            }
             rect.position = referenceCamera.WorldToScreenPoint(target.position + new Vector3(0, yOffset));
         }
+
+        Destroy(textObj);
     }
+
+
 
     public void ChangeState(GameState newState)
     {
@@ -218,7 +231,7 @@ public class GameManager : MonoBehaviour
         levelReachedDisplay.text = levelReachedData.ToString();
     }
 
-    public void AssignchosenWeaponAndPassiveItemUI(List<Image> chosenWeaponData, List<Image> chosenPassiveItemData)
+    public void AssignchosenWeaponAndPassiveItemUI(List<PlayerInventory.Slot> chosenWeaponData, List<PlayerInventory.Slot> chosenPassiveItemData)
     {
         if (chosenWeaponData.Count != chosenWeaponUI.Count || chosenPassiveItemData.Count != chosenPassiveItemUI.Count)
         {
@@ -227,10 +240,10 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < chosenWeaponUI.Count; i++)
         {
-            if (chosenWeaponData[i].sprite)
+            if (chosenWeaponData[i].image.sprite)
             {
                 chosenWeaponUI[i].enabled = true;
-                chosenWeaponUI[i].sprite = chosenWeaponData[i].sprite;
+                chosenWeaponUI[i].sprite = chosenWeaponData[i].image.sprite;
             }
             else
             {
@@ -240,10 +253,10 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < chosenPassiveItemUI.Count; i++)
         {
-            if (chosenPassiveItemData[i].sprite)
+            if (chosenPassiveItemData[i].image.sprite)
             {
                 chosenPassiveItemUI[i].enabled = true;
-                chosenPassiveItemUI[i].sprite = chosenPassiveItemData[i].sprite;
+                chosenPassiveItemUI[i].sprite = chosenPassiveItemData[i].image.sprite;
             }
             else
             {
@@ -275,7 +288,7 @@ public class GameManager : MonoBehaviour
     public void StartLevelUp()
     {
         ChangeState(GameState.LevelUp);
-        playerObject.SendMessage("RemoveAndApplyUpgrade");  
+        playerObject.SendMessage("RemoveAndApplyUpgrades");  
     }
 
     public void EndLevelUp()

@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 1769674779188454182}
   - component: {fileID: 1064968864261927732}
   - component: {fileID: 6586824780310567926}
-  - component: {fileID: 5585907170409665244}
-  - component: {fileID: 31082364639407846}
   - component: {fileID: 3771512983780949931}
   - component: {fileID: 7531948328223263748}
   - component: {fileID: -2858944375738770869}
@@ -181,33 +179,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5585907170409665244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3896297766536218951}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0bb5523fbe302418f2d59f45a8ed26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackTime: 0.2
---- !u!114 &31082364639407846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3896297766536218951}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54b0476f95f923a41b0bc434f476f265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whiteFlashMat: {fileID: 2100000, guid: e7e19eaed3261f249bc997d2b0e7a5aa, type: 2}
-  restoreDefaultMatTime: 0.2
 --- !u!114 &3771512983780949931
 MonoBehaviour:
   m_ObjectHideFlags: 0

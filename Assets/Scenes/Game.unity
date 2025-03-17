@@ -626,7 +626,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 88442889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &88442889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3401,12 +3413,12 @@ GameObject:
   - component: {fileID: 749504496}
   - component: {fileID: 749504495}
   - component: {fileID: 749504494}
-  - component: {fileID: 749504498}
   - component: {fileID: 749504499}
   - component: {fileID: 749504500}
   - component: {fileID: 749504501}
-  - component: {fileID: 749504502}
   - component: {fileID: 749504503}
+  - component: {fileID: 749504504}
+  - component: {fileID: 749504505}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3426,7 +3438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9eb706cb7f10b4599f610562c8e83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {x: 0, y: 0}
+  lastHorizontalVector: 0
+  lastVerticalVector: 0
+  moveDir: {x: 0, y: 0}
+  lastMovedVector: {x: 0, y: 0}
 --- !u!50 &749504495
 Rigidbody2D:
   serializedVersion: 5
@@ -3526,28 +3541,6 @@ Transform:
   - {fileID: 1808836944}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &749504498
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749504493}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9547f2fe235ff234dacfe19d06ebbf24, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &749504499
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3640,81 +3633,6 @@ MonoBehaviour:
   healthBar: {fileID: 1531372050}
   expBar: {fileID: 1564503960}
   levelText: {fileID: 1996697500}
---- !u!114 &749504502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749504493}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731ee196535c83b49a638dce7e79767a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  weaponLevels: 000000000000000000000000000000000000000000000000
-  weaponUISlot:
-  - {fileID: 1845984763}
-  - {fileID: 1426405859}
-  - {fileID: 923728214}
-  - {fileID: 1253770554}
-  - {fileID: 591601505}
-  - {fileID: 1431758829}
-  passiveItemSlot:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  passiveItemLevels: 000000000000000000000000000000000000000000000000
-  passiveItemUISlot:
-  - {fileID: 2032180504}
-  - {fileID: 23928722}
-  - {fileID: 229603745}
-  - {fileID: 606150520}
-  - {fileID: 311252766}
-  - {fileID: 1028010261}
-  weaponUpgradeOptions:
-  - weaponUpgradeIndex: 0
-    initialWeapon: {fileID: 5136124389511208616, guid: 87db4051c30603a41b7b63692e5fdab0, type: 3}
-    weaponData: {fileID: 11400000, guid: 234ca29665d2bec4488c8460529f9e58, type: 2}
-  - weaponUpgradeIndex: 1
-    initialWeapon: {fileID: 8114236890385247265, guid: f0a71fc8111e68c419fa684161dd23a8, type: 3}
-    weaponData: {fileID: 11400000, guid: b5434ffe6b040b4409534296e11424b5, type: 2}
-  passiveItemUpgradeOptions:
-  - passiveItemIndex: 0
-    initialPassiveItem: {fileID: 759583151901751817, guid: 0c416ed308018ab46a9c4fb243d82357, type: 3}
-    passiveItemData: {fileID: 11400000, guid: 354e772c3cd61c04d92f9d644c5c633c, type: 2}
-  - passiveItemIndex: 1
-    initialPassiveItem: {fileID: 4729864611003896023, guid: 4649306abecb7ec4faf75b063808276f, type: 3}
-    passiveItemData: {fileID: 11400000, guid: 7c44151d9406f5c49b99c9d6d8570ef6, type: 2}
-  upgradeUIOptions:
-  - upgradeNameDisplay: {fileID: 158846355}
-    upgradeDescriptionDisplay: {fileID: 2003661400}
-    upgradeIcon: {fileID: 2109170841}
-    upgradeButton: {fileID: 88442888}
-  - upgradeNameDisplay: {fileID: 13585793}
-    upgradeDescriptionDisplay: {fileID: 1374458335}
-    upgradeIcon: {fileID: 862556232}
-    upgradeButton: {fileID: 1891553586}
-  - upgradeNameDisplay: {fileID: 913033307}
-    upgradeDescriptionDisplay: {fileID: 1009221068}
-    upgradeIcon: {fileID: 875063016}
-    upgradeButton: {fileID: 90912988}
-  - upgradeNameDisplay: {fileID: 549013493}
-    upgradeDescriptionDisplay: {fileID: 1803509589}
-    upgradeIcon: {fileID: 1666570059}
-    upgradeButton: {fileID: 323518349}
-  weaponEvolutions:
-  - {fileID: 11400000, guid: 4db14b29caf8b584b993c6802ca7508e, type: 2}
 --- !u!114 &749504503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,6 +3674,7 @@ MonoBehaviour:
   availableWeapons:
   - {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
   - {fileID: 11400000, guid: 0c920f2c8344fbb4d803b185198611c1, type: 2}
+  - {fileID: 11400000, guid: e9074e15c4b4c304b943b0df5883d0ab, type: 2}
   availablePassives:
   - {fileID: 11400000, guid: 785ced5f6841d9b43aa1694e08dc2339, type: 2}
   - {fileID: 11400000, guid: d94211634a6f7004faceda6875ec0562, type: 2}
@@ -3777,6 +3696,40 @@ MonoBehaviour:
     upgradeDescriptionDisplay: {fileID: 1803509589}
     upgradeIcon: {fileID: 1666570059}
     upgradeButton: {fileID: 323518349}
+--- !u!114 &749504504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749504493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0996504d3cca9b44996955c66a909d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &749504505
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749504493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98bbab80bfa67904a8a572668d305172, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &858867855
 GameObject:
   m_ObjectHideFlags: 0
@@ -10063,6 +10016,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052181162}
   m_CullTransparentMesh: 1
+--- !u!1001 &2057841267
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.059599906
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001466447208362822, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4033452014078988027, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
+      propertyPath: m_Name
+      value: Whip Projectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c3aa6590a52eb3438ff0108e5c9ed18, type: 3}
 --- !u!1 &2066087829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12399,3 +12409,4 @@ SceneRoots:
   - {fileID: 1275629263}
   - {fileID: 1551334622}
   - {fileID: 2731714540164331613}
+  - {fileID: 2057841267}

@@ -3,92 +3,80 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
     public static PlayerController Instance;
 
-    private PlayerControls playerControls;
-    public Vector2 movement;
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
+    [HideInInspector]
+    public float lastHorizontalVector;
+    [HideInInspector]
+    public float lastVerticalVector;
+    [HideInInspector]
+    public Vector2 moveDir;
 
-    private Animator myAnimator;
-    private SpriteRenderer mySpriteRenderer;
-
-    private bool facingLeft = false;
+    [HideInInspector]
+    public Vector2 lastMovedVector;
 
     PlayerStats playerStats;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         playerStats = GetComponent<PlayerStats>();
+        lastMovedVector = new Vector2(1, 0f);
     }
 
     private void Awake()
     {
         Instance = this;
-        playerControls = new PlayerControls();
-        rb = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnEnable()
+    void Update()
     {
-        playerControls.Enable();
+        InputManagement();
     }
 
-    private void Update()
+    void FixedUpdate()
     {
-        PlayerInput();
-    }
-
-    private void FixedUpdate()
-    {
-        AdjustPlayerFacingDirection();
         Move();
     }
 
-    private void PlayerInput()
+    void InputManagement()
     {
         if (GameManager.instance.isGameOver)
         {
             return;
         }
 
-        movement = playerControls.Movement.Move.ReadValue<Vector2>(); 
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        myAnimator.SetFloat("moveX", movement.x); 
-        myAnimator.SetFloat("moveY", movement.y);
+        moveDir = new Vector2(moveX, moveY).normalized;
+
+        if (moveDir.x != 0)
+        {
+            lastHorizontalVector = moveDir.x;
+            lastMovedVector = new Vector2(lastHorizontalVector, 0f);
+        }
+
+        if (moveDir.y != 0)
+        {
+            lastVerticalVector = moveDir.y;
+            lastMovedVector = new Vector2(0f, lastVerticalVector);
+        }
+
+        if (moveDir.x != 0 && moveDir.y != 0)
+        {
+            lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);
+        }
     }
 
-    private void Move()
+    void Move()
     {
         if (GameManager.instance.isGameOver)
         {
             return;
         }
 
-        rb.MovePosition(rb.position + movement * (playerStats.CurrentMoveSpeed * Time.deltaTime));
-    }
-
-    private void AdjustPlayerFacingDirection()
-    {
-        if (GameManager.instance.isGameOver)
-        {
-            return;
-        }
-
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (mousePos.x < playerScreenPoint.x)
-        {
-            mySpriteRenderer.flipX = true;
-            facingLeft = true;
-        }
-        else
-        {
-            mySpriteRenderer.flipX = false;
-            facingLeft = false;
-        }
+        rb.linearVelocity = new Vector2(moveDir.x * playerStats.MoveSpeed, moveDir.y * playerStats.MoveSpeed);
     }
 }

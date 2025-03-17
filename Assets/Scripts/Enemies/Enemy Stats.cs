@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -62,6 +62,12 @@ public class EnemyStats : MonoBehaviour
         if(knockbackFore > 0)
         {
             Vector2 dir = (Vector2)transform.position - sourcePosition;
+
+            if (dir.magnitude < 0.1f)
+            {
+                dir = Random.insideUnitCircle.normalized;
+            }
+
             movement.KnockBack(dir.normalized * knockbackFore, knockbackDuration);
         }
 

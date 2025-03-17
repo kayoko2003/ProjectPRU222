@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : WeaponEffect
@@ -35,23 +36,51 @@ public class Projectile : WeaponEffect
 
     public virtual void AcquireAutoAimFacing()
     {
-        float aimAngle;
+        EnemyStats[] enemyTargets = FindObjectsByType<EnemyStats>(FindObjectsSortMode.None);
+        GameObject[] propObjects = GameObject.FindGameObjectsWithTag("Prop");
 
-        EnemyStats[] targets = FindObjectsOfType<EnemyStats>();
-
-        if (targets.Length > 0)
+        List<GameObject> targets = new List<GameObject>();
+        foreach (EnemyStats enemy in enemyTargets)
         {
-            EnemyStats selectedTarget = targets[Random.Range(0, targets.Length)];
-            Vector2 difference = selectedTarget.transform.position - transform.position;
-            aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            if (enemy != null)
+                targets.Add(enemy.gameObject);
+        }
+        foreach (GameObject prop in propObjects)
+        {
+            if (prop != null)
+                targets.Add(prop);
+        }
+
+        if (targets.Count > 0)
+        {
+            GameObject closestTarget = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (GameObject target in targets)
+            {
+                float distance = Vector2.Distance(transform.position, target.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = target;
+                }
+            }
+
+            if (closestTarget != null)
+            {
+                Vector2 difference = closestTarget.transform.position - transform.position;
+                float aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, aimAngle);
+            }
         }
         else
         {
-            aimAngle = Random.Range(0f, 360f);
+            float aimAngle = Random.Range(0f, 360f);
+            transform.rotation = Quaternion.Euler(0, 0, aimAngle);
         }
-
-        transform.rotation = Quaternion.Euler(0, 0, aimAngle);
     }
+
+
 
     protected virtual void FixedUpdate()
     {

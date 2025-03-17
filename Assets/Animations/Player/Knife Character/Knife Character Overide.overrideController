@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Knife Character Overide
+  m_Controller: {fileID: 9100000, guid: 98bbab80bfa67904a8a572668d305172, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7748eefee1543fb46bd2a46706e7c471, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 397e8e31f818f0b46accd3e8db20b377, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f78aeb26ad2c10c448eeb2747e2821d4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4480665b0a0166d4299a28ba19a534c9, type: 2}

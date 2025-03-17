@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cec965b7f37b143a4f8acee481d245, type: 3}
   m_Name: Genaro
   m_EditorClassIdentifier: 
-  icon: {fileID: -1413294825, guid: 99a24620d31e5ce4e823c32d11e17c2c, type: 3}
+  icon: {fileID: -1271462477897197946, guid: 94538487f68ec6940933211ba20b2bbe, type: 3}
+  controller: {fileID: 22100000, guid: 9ac1da2f7fbb59b449c2371b8460ba05, type: 2}
   name: Ninja
   startingWeapon: {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
   stats:

@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 579569563849759094, guid: 2674d584b308d2e4ab5f0e1a8eaa1862, type: 3}
   maxLevel: 5
-  evolutionData: []
+  evolutionData:
+  - name: Update
+    condition: 0
+    consumes: 2
+    evolutionLevel: 2
+    catalyst:
+    - itemType: {fileID: 11400000, guid: 2311691cdde2ee84fa7b202dd56bfb9a, type: 2}
+      level: 0
+    outcome:
+      itemType: {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
+      level: 1
   behaviour: AuraWeapon
   baseStarts:
     name: Garlic
@@ -29,15 +39,59 @@ MonoBehaviour:
       width: 0
       height: 0
     lifespan: 0
-    damage: 5
+    damage: 20
     damageVariance: 1
     area: 1
     speed: 0
-    cooldown: 1.3
+    cooldown: 1
     projectileInterval: 0
     knockback: 1
     number: 1
     piercing: 0
     maxInstances: 50
-  linearGrowth: []
+  linearGrowth:
+  - name: Level 2
+    description: Large
+    projectilePrefab: {fileID: 0}
+    auraPrefab: {fileID: 0}
+    hitEffect: {fileID: 0}
+    spawnVariance:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    lifespan: 0
+    damage: 0
+    damageVariance: 0
+    area: 0.2
+    speed: 0
+    cooldown: 0
+    projectileInterval: 0
+    knockback: 0
+    number: 0
+    piercing: 0
+    maxInstances: 0
+  - name: Level 3
+    description: Large
+    projectilePrefab: {fileID: 0}
+    auraPrefab: {fileID: 0}
+    hitEffect: {fileID: 0}
+    spawnVariance:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    lifespan: 0
+    damage: 10
+    damageVariance: 0
+    area: 0
+    speed: 0
+    cooldown: 0
+    projectileInterval: 0
+    knockback: 0
+    number: 0
+    piercing: 0
+    maxInstances: 0
   randomGrowth: []

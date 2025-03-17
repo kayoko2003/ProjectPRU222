@@ -194,6 +194,8 @@ public class PlayerStats : MonoBehaviour
     public Image expBar;
     public TMP_Text levelText;
 
+    PlayerAnimator playerAnimator;
+
     void Start()
     {
         inventory.Add(characterData.StartingWeapon);
@@ -229,12 +231,16 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         characterData = CharacterSelector.GetData();
-        CharacterSelector.instance.DestroySingleton();
+
+        if(CharacterSelector.instance) CharacterSelector.instance.DestroySingleton();
 
         inventory = GetComponent<PlayerInventory>();
 
         baseStats = actualStats = characterData.stats;
         health = actualStats.maxHealth;
+        playerAnimator = GetComponent<PlayerAnimator>();
+        if(characterData.controller)
+            playerAnimator.SetAnimatorController(characterData.controller);
     }
 
     public void RecalculateStats()
@@ -320,6 +326,7 @@ public class PlayerStats : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             GameManager.instance.AssignLevelReachedUI(level);
+            GameManager.instance.AssignchosenWeaponAndPassiveItemUI(inventory.weaponSlots, inventory.passiveSlots);
             GameManager.instance.GameOver();
         }
     }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1cec965b7f37b143a4f8acee481d245, type: 3}
-  m_Name: Garlic
+  m_Name: Whip
   m_EditorClassIdentifier: 
-  icon: {fileID: -2115022801, guid: 9841e9de75fc6ba42a2b81253e09efbc, type: 3}
-  controller: {fileID: 9100000, guid: 98bbab80bfa67904a8a572668d305172, type: 2}
-  name: Garlic Start
-  startingWeapon: {fileID: 11400000, guid: 0c920f2c8344fbb4d803b185198611c1, type: 2}
+  icon: {fileID: 5546671543968653177, guid: eea3006b683dd49458db27322b10fa00, type: 3}
+  controller: {fileID: 22100000, guid: 9ac1da2f7fbb59b449c2371b8460ba05, type: 2}
+  name: Whip
+  startingWeapon: {fileID: 11400000, guid: e9074e15c4b4c304b943b0df5883d0ab, type: 2}
   stats:
     maxHealth: 1000
     recovery: 0

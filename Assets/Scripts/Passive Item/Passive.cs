@@ -26,7 +26,7 @@ public class Passive : Item
 
     public override bool DoLevelUp()
     {
-        return base.DoLevelUp();
+        base.DoLevelUp();
 
         if (!CanLevelUp())
         {

@@ -6,7 +6,6 @@ public class Aura : WeaponEffect
     Dictionary<EnemyStats, float> affectedTargets = new Dictionary<EnemyStats, float>();
     List<EnemyStats> targetsToUnaffect = new List<EnemyStats>();
 
-    // Update is called once per frame
     void Update()
     {
         Dictionary<EnemyStats, float> affectedTargsCopy = new Dictionary<EnemyStats, float>(affectedTargets);

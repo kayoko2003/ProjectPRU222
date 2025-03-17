@@ -57,12 +57,12 @@ public class Item : MonoBehaviour
             return false;
         }
 
-        bool consumePassives = (evolutionData.consumption & ItemData.Evolution.Consumption.passives) > 0;
-        bool comsumeWeapons = (evolutionData.consumption & ItemData.Evolution.Consumption.weapon) > 0;
+        bool consumePassives = (evolutionData.consumes & ItemData.Evolution.Consumption.passives) > 0;
+        bool comsumeWeapons = (evolutionData.consumes & ItemData.Evolution.Consumption.weapon) > 0;
 
         foreach (ItemData.Evolution.Config c in evolutionData.catalyst)
         {
-            if(c.itemType is PassiveData && consumePassives) inventory.Remove(c.itemType, true);
+            if (c.itemType is PassiveData && consumePassives) inventory.Remove(c.itemType, true);
             if (c.itemType is WeaponData && comsumeWeapons) inventory.Remove(c.itemType, true);
         }
 

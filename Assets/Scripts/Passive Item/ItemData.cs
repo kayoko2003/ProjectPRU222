@@ -14,7 +14,7 @@ public abstract class ItemData : ScriptableObject
         public Condition condition;
 
         [System.Flags] public enum Consumption { passives = 1, weapon = 2 }
-        public Consumption consumption;
+        public Consumption consumes;
 
         public int evolutionLevel;
         public Config[] catalyst;

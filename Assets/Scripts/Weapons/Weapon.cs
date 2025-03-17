@@ -23,6 +23,8 @@ public abstract class Weapon : Item
             Starts result = new Starts();
             result.name = s2.name ?? s1.name;
             result.description = s2.description ?? s1.description;
+            result.projectilePrefab = s2.projectilePrefab ?? s1.projectilePrefab;
+            result.auraPrefab = s2.auraPrefab ?? s1.auraPrefab;
             result.hitEffect = s2.hitEffect == null ? s1.hitEffect : s2.hitEffect;
             result.spawnVariance = s2.spawnVariance;
             result.lifespan = s1.lifespan + s2.lifespan;
@@ -57,7 +59,7 @@ public abstract class Weapon : Item
         base.Intialise(data);
         this.data = data;
         currentStats = data.baseStarts;
-        movement = GetComponent<PlayerController>();
+        movement = Object.FindAnyObjectByType<PlayerController>();
         currentCooldown = currentStats.cooldown;
     }
 
