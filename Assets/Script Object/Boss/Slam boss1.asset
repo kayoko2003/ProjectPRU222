@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ca269f6f2a5f445b5a0235208ca911, type: 3}
-  m_Name: Slam enemy
+  m_Name: Slam boss1
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  maxHealth: 40
-  damage: 30
+  moveSpeed: 4
+  maxHealth: 60
+  damage: 50
