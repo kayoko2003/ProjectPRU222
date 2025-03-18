@@ -9,7 +9,7 @@ public class WhipWeapon : ProjectileWeapon
     {
         if(!currentStats.projectilePrefab)
         {
-            currentCooldown = data.baseStarts.cooldown;
+            ActivateCooldown(true);
             return false;
         }
 
@@ -48,7 +48,7 @@ public class WhipWeapon : ProjectileWeapon
         }
 
         prefab.weapon = this;
-        currentCooldown = data.baseStarts.cooldown;
+        ActivateCooldown(true);
         attackCount--;
 
         currentSpawnCount++;

@@ -23,7 +23,7 @@ public class Aura : WeaponEffect
                 else 
                 {
                     Weapon.Starts stats = weapon.GetStarts();
-                    affectedTargets[pair.Key] = stats.cooldown;
+                    affectedTargets[pair.Key] = stats.cooldown * weapon.Owner.Stats.cooldown;
                     pair.Key.TakeDame(GetDamage(), transform.position, stats.knockback );
                 }
             }

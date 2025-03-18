@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
+    public const float DEFAULT_MOVESPEED = 5f;
+
     Rigidbody2D rb;
     [HideInInspector]
     public float lastHorizontalVector;
@@ -77,6 +79,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        rb.linearVelocity = new Vector2(moveDir.x * playerStats.MoveSpeed, moveDir.y * playerStats.MoveSpeed);
+        rb.linearVelocity = moveDir * DEFAULT_MOVESPEED * playerStats.Stats.moveSpeed;
     }
 }

@@ -17,9 +17,19 @@ MonoBehaviour:
   name: Ninja
   startingWeapon: {fileID: 11400000, guid: b2e03333e4c8c6547b1c962ea3951b51, type: 2}
   stats:
-    maxHealth: 1000
+    maxHealth: 100
     recovery: 0
-    moveSpeed: 5
+    armor: 0
+    moveSpeed: 1
     might: 1
+    area: 1
     speed: 1
+    duration: 1
+    amount: 0
+    cooldown: 1
+    luck: 1
+    growth: 1
+    greed: 1
+    curse: 1
     magnet: 30
+    revival: 0

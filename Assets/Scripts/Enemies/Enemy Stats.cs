@@ -4,16 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class EnemyStats : MonoBehaviour
 {
-    public EnemyScriptableObject enemyData;
-
-    [HideInInspector]
     public float currentMoveSpeed;
-    [HideInInspector]
     public float currentHealth;
-    [HideInInspector]
     public float currentDamage;
 
-    public float despawnDistance = 20f;
     Transform player;
 
     [Header("Damage Feedback")]
@@ -24,11 +18,11 @@ public class EnemyStats : MonoBehaviour
     SpriteRenderer sr;
     EnemyMovement movement;
 
+    public static int count;
+
     void Awake()
     {
-        currentMoveSpeed = enemyData.MoveSpeed;
-        currentHealth = enemyData.MaxHealth;
-        currentDamage = enemyData.Damage;
+        count++;
     }
 
     void Start()
@@ -39,14 +33,6 @@ public class EnemyStats : MonoBehaviour
         originalColor = sr.color;
 
         movement = GetComponent<EnemyMovement>();
-    }
-
-    void Update()
-    {
-        if (Vector2.Distance(transform.position, player.position) >= despawnDistance)
-        {
-            ReturnEnemy();
-        }
     }
 
     public void TakeDame(float dmg, Vector2 sourcePosition, float knockbackFore = 5f, float knockbackDuration = 0.2f)
@@ -87,6 +73,12 @@ public class EnemyStats : MonoBehaviour
 
     public void Kill()
     {
+        DropRateManager drops = GetComponent<DropRateManager>();
+        if (drops)
+        {
+            drops.active = true;
+        }
+
         StartCoroutine(KillFade());
     }
 
@@ -121,13 +113,8 @@ public class EnemyStats : MonoBehaviour
         {
             return;
         }
-        EnemySpawn es = Object.FindAnyObjectByType<EnemySpawn>();
-        es.OnEnemyKilled();
+
+        count--;
     }
 
-    void ReturnEnemy()
-    {
-        EnemySpawn es = Object.FindAnyObjectByType<EnemySpawn>();
-        transform.position = player.position + es.relativeSpawnPoint[Random.Range(0, es.relativeSpawnPoint.Count)].position;
-    }
 }

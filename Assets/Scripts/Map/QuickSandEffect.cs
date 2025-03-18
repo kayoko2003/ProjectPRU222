@@ -23,8 +23,10 @@ public class QuicksandEffect : MonoBehaviour
 
             if (playerStats != null)
             {
-                defaultSpeed = playerStats.CurrentMoveSpeed;
-                playerStats.CurrentMoveSpeed *= slowMultiplier; // Giảm tốc độ
+                var stats = playerStats.Stats;
+                defaultSpeed = playerStats.Stats.moveSpeed;
+                stats.moveSpeed *= slowMultiplier; // Giảm tốc độ
+                playerStats.Stats = stats;
             }
         }
     }
@@ -43,7 +45,9 @@ public class QuicksandEffect : MonoBehaviour
 
             if (playerStats != null)
             {
-                playerStats.CurrentMoveSpeed = defaultSpeed; // Khôi phục tốc độ
+                var stats = playerStats.Stats; 
+                stats.moveSpeed = defaultSpeed;  
+                playerStats.Stats = stats;
             }
         }
     }

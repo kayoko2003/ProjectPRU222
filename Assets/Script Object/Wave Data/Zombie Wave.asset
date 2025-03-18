@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54ff01c86420834eac8c3082c7cb1be, type: 3}
+  m_Name: Zombie Wave
+  m_EditorClassIdentifier: 
+  possibleSpawnPrefabs:
+  - {fileID: 1076367310758304446, guid: 95467fe272ade9644a323abe50f06f5c, type: 3}
+  spawnInterval: {x: 1.5, y: 2.5}
+  spawnsPerTick: {x: 3, y: 4}
+  duration: 60
+  startingCount: 0
+  totalSpawns: 4294967295
+  exitCondition: 1
+  mustKillAll: 0
+  spawntCount: 0

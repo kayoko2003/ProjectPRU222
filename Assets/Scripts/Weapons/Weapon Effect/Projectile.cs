@@ -18,10 +18,12 @@ public class Projectile : WeaponEffect
         if(rb.bodyType == RigidbodyType2D.Dynamic)
         {
             rb.angularVelocity = rotationSpeed.z;
-            rb.linearVelocity = transform.right * starts.speed;
+            rb.linearVelocity = transform.right * starts.speed * weapon.Owner.Stats.speed;
         }
 
-        float area = starts.area == 0 ? 1 : starts.area;
+        float area = weapon.GetArea();
+        if (area <= 0) area = 1;
+
         transform.localScale = new Vector3(
             area * Mathf.Sign(transform.localScale.x),
             area * Mathf.Sign(transform.localScale.y), 1
@@ -87,7 +89,7 @@ public class Projectile : WeaponEffect
         if(rb.bodyType == RigidbodyType2D.Kinematic)
         {
             Weapon.Starts starts = weapon.GetStarts();
-            transform.position += transform.right * starts.speed * Time.fixedDeltaTime;
+            transform.position += transform.right * starts.speed * weapon.Owner.Stats.speed * Time.fixedDeltaTime;
             rb.MovePosition(transform.position);
             transform.Rotate(rotationSpeed * Time.fixedDeltaTime);
         }

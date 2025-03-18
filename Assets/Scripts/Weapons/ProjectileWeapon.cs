@@ -30,7 +30,7 @@ public class ProjectileWeapon : Weapon
     {
         if(!currentStats.projectilePrefab)
         {
-            currentCooldown = data.baseStarts.cooldown;
+            ActivateCooldown(true);
             return false;
         }
 
@@ -46,10 +46,7 @@ public class ProjectileWeapon : Weapon
         prefab.weapon = this;
         prefab.owner = owner;
 
-        if(currentCooldown <= 0)
-        {
-            currentCooldown += currentStats.cooldown;
-        }
+        ActivateCooldown(true);
 
         attackCount--;
 

@@ -2,28 +2,28 @@
 
 public class EnemyMovement : MonoBehaviour
 {
-    Transform player;
-    EnemyStats enemyStats;
+    protected Transform player;
+    protected EnemyStats enemyStats;
 
-    Vector2 knockbackVelocity;
-    float knockbackDuration;
+    protected Vector2 knockbackVelocity;
+    protected float knockbackDuration;
 
-    void Start()
+    public enum OutOfFrameAction { none, respawnAtEdge, despawn}
+    public OutOfFrameAction outOfFrameAction = OutOfFrameAction.respawnAtEdge;
+
+    protected bool spawnedOutOFrame = false;
+
+    protected virtual void Start()
     {
+        spawnedOutOFrame = !SpawnManager.IsWithinBoundaries(transform);
         enemyStats = GetComponent<EnemyStats>();
 
-        PlayerController playerController = Object.FindFirstObjectByType<PlayerController>();
-        if (playerController != null)
-        {
-            player = playerController.transform;
-        }
-        else
-        {
-            Debug.LogError("PlayerController not found in the scene!");
-        }
+        PlayerController[] allPlayers = Resources.FindObjectsOfTypeAll<PlayerController>();
+
+        player = allPlayers[Random.Range(0, allPlayers.Length)].transform;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (knockbackDuration > 0)
         {
@@ -32,11 +32,33 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyStats.currentMoveSpeed * Time.deltaTime);
+            Move();
+            HandleOutOfFrameAction();
         }
     }
 
-    public void KnockBack(Vector2 velocity, float duration)
+    protected virtual void HandleOutOfFrameAction()
+    {
+        if (!SpawnManager.IsWithinBoundaries(transform))
+        {
+            switch (outOfFrameAction)
+            {
+                case OutOfFrameAction.none: default: break;
+                case OutOfFrameAction.respawnAtEdge:
+                    transform.position = SpawnManager.GeneratePosition();
+                    break;
+                case OutOfFrameAction.despawn:
+                    if (!spawnedOutOFrame)
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+            }
+        }
+        else spawnedOutOFrame = false;
+    }
+
+    public virtual void KnockBack(Vector2 velocity, float duration)
     {
         if (knockbackDuration > 0)
         {
@@ -45,5 +67,10 @@ public class EnemyMovement : MonoBehaviour
 
         knockbackVelocity = velocity;
         knockbackDuration = duration;
+    }
+
+    public virtual void Move()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, enemyStats.currentMoveSpeed * Time.deltaTime);
     }
 }
